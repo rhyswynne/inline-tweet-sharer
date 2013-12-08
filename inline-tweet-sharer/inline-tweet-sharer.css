@@ -1,0 +1,31 @@
+a.inline-twitter-link
+{
+    background: none repeat scroll 0% 0% rgb(233, 235, 228);
+    color: #000;
+    text-decoration: none;
+}
+
+a.inline-twitter-link span
+{
+    display: inline-block;
+    background-image: url('twitter-bg.png');
+    width: 14px;
+    height: 11px;
+    background-color: rgb(233, 235, 228);
+    background-repeat: no-repeat;
+}
+
+a:hover.inline-twitter-link
+{
+    background: none repeat scroll 0% 0% rgb(226, 241, 249);   
+}
+
+a:hover.inline-twitter-link span
+{
+    display: inline-block; 
+    width: 14px;
+    height: 11px;
+    background-color: rgb(226, 241, 249);
+    background-image: url('twitter-bg-hover.png');
+    background-repeat: no-repeat;
+}

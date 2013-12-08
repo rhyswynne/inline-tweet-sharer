@@ -1,0 +1,99 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Inline Tweet Sharer\n"
+"POT-Creation-Date: 2013-11-09 16:40+0100\n"
+"PO-Revision-Date: 2013-11-09 16:45+0100\n"
+"Last-Translator: Davide De Maestri <davide.demaestri@gmail.com>\n"
+"Language-Team: Winwar Media\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: c:\\inline-tweet-sharer\n"
+
+#: c:\inline-tweet-sharer/inline-tweet-sharer.php:19
+msgid ""
+"Create twitter links on your site that tweet the anchor text - for memorable "
+"quotes to help increase social media views, similar to the New York Times."
+msgstr ""
+"Crea links twittabili sul tuoi sito selezionando direttamente il testo - per "
+"citazioni memorabili che aiutino ad incrementare le visualizzazioni sociali, "
+"come accade sul New York Times"
+
+#: c:\inline-tweet-sharer/inline-tweet-sharer.php:78
+msgid "Tweet This!"
+msgstr "Twitta questo!"
+
+#: c:\inline-tweet-sharer/inline-tweet-sharer.php:132
+msgid ""
+"Want to know about updates to this plugin without having to log into your "
+"site every time? Want to know about other cool plugins we've made? Add your "
+"email and we'll add you to our very rare mail outs."
+msgstr ""
+"Vuoi sapere di più riguardo agli aggiornamenti di questo plugin senza dover "
+"visitare il tuo sito ogni volta? Vuoi sapere quali altri plugins abbiamo "
+"realizzato? Aggiungi la tua email e ti invieremo, raramente, le nostre "
+"informazioni"
+
+#: c:\inline-tweet-sharer/inline-tweet-sharer.php:138
+msgid "Email Address"
+msgstr "Indirizzo Email"
+
+#: c:\inline-tweet-sharer/inline-tweet-sharer.php:161
+msgid "Default Twitter Handle (leave blank for none)"
+msgstr "Twitter Alias di default (lascia bianco per non impostare un alias)"
+
+#: c:\inline-tweet-sharer/inline-tweet-sharer.php:163
+msgid ""
+"This is the \"RT @______: section for tweets before the quoted text, leave "
+"blank for no quoted text"
+msgstr ""
+"Questo definisce l'alias con cui verrà impostato il retweet \"RT @______: "
+"prima del testo che verrà condiviso."
+
+#: c:\inline-tweet-sharer/inline-tweet-sharer.php:164
+msgid "Just place the twitter username, no @, no http://twitter.com/"
+msgstr ""
+"Inserisci semplicemente la username di twitter che vuoi usare, senza @, "
+"senza http://twitter.com/"
+
+#: c:\inline-tweet-sharer/inline-tweet-sharer.php:169
+msgid "Mark Twitter Links"
+msgstr "Evidenzia i Links da Twittare"
+
+#: c:\inline-tweet-sharer/inline-tweet-sharer.php:174
+msgid "Capitalise first letter of Tweet?"
+msgstr "Prima lettera maiuscola:"
+
+#: c:\inline-tweet-sharer/inline-tweet-sharer.php:184
+msgid "Save Changes"
+msgstr "Salva le Modifiche"
+
+#: c:\inline-tweet-sharer/inline-tweet-sharer.php:194
+msgid "Like this Plugin?"
+msgstr "Ti piace questo Plugin?"
+
+#: c:\inline-tweet-sharer/inline-tweet-sharer.php:195
+msgid "Rate this plugin"
+msgstr "Vota questo Plguin"
+
+#: c:\inline-tweet-sharer/inline-tweet-sharer.php:246
+msgid "About the Author"
+msgstr "Informazioni sull'Autore"
+
+#: c:\inline-tweet-sharer/inline-tweet-sharer.php:258
+msgid ""
+"Rhys Wynne is a Digital Marketing Consultant currently at FireCask and a "
+"freelance WordPress developer and blogger. His plugins have had a total of "
+"100,000 downloads, and his premium plugins have generated four figure sums "
+"in terms of sales. Rhys likes rubbish football (supporting Colwyn Bay FC) "
+"and Professional Wrestling."
+msgstr ""
+"Rhys Wynne è un consulente di Digital Marketin attualmente lavora per la "
+"FireCask e si occupa di blogg e sviluppo per WordPress come freelancer. I "
+"suoi plugins hanno raggiunto un totale di oltre 100.000 downloads, ed i suoi "
+"plugins premium hanno generato una cifra a 4 numeri in termini di vendite. "
+"Rhys ama il football (è un supportere dei Colwyn Bay FC) e del Wrestling "
+"agonistico."
