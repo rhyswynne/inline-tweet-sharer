@@ -14,7 +14,7 @@ Link:
 Tags: twitter, social media, social media marketing, social media promotion, tweet, new york times
 Requires at least: 3.0
 Tested up to: 3.8
-Stable tag: 1.2.1
+Stable tag: 1.3
 
 == Description ==
 
@@ -33,10 +33,26 @@ The plugin has been translated to the following languages.
 
 To contribute a translation, please [contact me](http://winwar.co.uk/contact-us/)!
 
+= About Winwar Media =
+This plugin is made by [**Winwar Media**](http://winwar.co.uk/), a WordPress Development and Training Agency in Manchester, UK.
+
+Why don't you?
+
+* Check out our book, [bbPress Complete](http://winwar.co.uk/books/bbpress-complete/)
+* Check out our other [WordPress Plugins](http://winwar.co.uk/plugins/), including [WP Email Capture](http://wpemailcapture.com)
+* Follow us on Social Media, such as [Facebook](https://www.facebook.com/winwaruk), [Twitter](https://twitter.com/winwaruk) or [Google+](https://plus.google.com/+WinwarCoUk)
+* [Send us an email](http://winwar.co.uk/contact-us/)! We like hearing from plugin users.
+
+= On Github =
+This project is now on github, [you can view the repository here](https://github.com/rhyswynne/inline-tweet-sharer/). There are other versions, but this is the one I've put up, so where all the developmental will be tracked.
+
 == Screenshots ==
 1. Example of how the twitter feed appears in your site.
 
 == Changelog ==
+= 1.3 =
+* Added bit.ly Integration.
+
 = 1.2.1 =
 * Bug fix so that special characters are encoded in the URL.
 * Tested with WordPress 3.8

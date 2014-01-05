@@ -3,17 +3,21 @@
 Plugin Name:  Inline Tweet Sharer
 Plugin URI: http://winwar.co.uk/plugins/inline-tweet-sharer/
 Description:  Create twitter links on your site that tweet the anchor text - for memorable quotes to help increase social media views, similar to the New York Times.
-Version:      1.2.1
+Version:      1.3
 Author:       Rhys Wynne
 Author URI:   http://winwar.co.uk/
 
 */
+
+define('ITS_PATH', dirname(__FILE__));
 
 function inline_tweet_sharer_textdomain() {
     $plugin_dir = basename(dirname(__FILE__));
     load_plugin_textdomain( 'inline-tweet-sharer', false, $plugin_dir .'/languages' );
 }
 add_action('plugins_loaded', 'inline_tweet_sharer_textdomain');
+
+include_once(ITS_PATH . '/bitly.php');
 
 define("ITS_PLUGIN_NAME","Inline Tweet Sharer");
 define('ITS_PLUGIN_TAGLINE',__('Create twitter links on your site that tweet the anchor text - for memorable quotes to help increase social media views, similar to the New York Times.','inline-tweet-sharer'));
@@ -75,7 +79,17 @@ function inline_tweet_sharer_create_tweet($prefix = "", $tweeter = "", $suffix =
         $link .= 'inline-twitter-link';
     }
     
-    $url = 'https://twitter.com/intent/tweet?url=' . urlencode(get_permalink()) . '&text=' . $tweetlinkstring;
+    if ("1" == get_option('inline-tweet-sharer-bitly'))
+    {
+        $urlshortener = get_option('inline-tweet-sharer-urlshortened');
+        if (!$urlshortener) { $urlshortener = "bit.ly"; }
+        $results = bitly_v3_shorten(get_permalink(), $urlshortener);
+        $permalink = $results['url'];
+    } else {
+        $permalink = get_permalink();
+    }
+
+    $url = 'https://twitter.com/intent/tweet?url=' . urlencode($permalink) . '&text=' . $tweetlinkstring;
     $url = str_replace(array("\n","\r"), "", $url);
     $url = str_replace(array("/"), "\/", $url);
     $link .= '" href="#" onclick="inline_tweet_sharer_open_win(\''.$url.'\');"';
@@ -195,6 +209,48 @@ function inline_tweet_sharer_options() {
                         </tbody>
                     </table>
 
+                    <h3><?php _e('Advanced Options','inline-tweet-sharer'); ?></h3>
+                    <p><?php _e('To connect your bit.ly account you need an API key.','inline-tweet-sharer'); ?></p>
+                    <p><strong><?php _e('To get your API Key:-','inline-tweet-sharer'); ?></strong></p>
+                    <ol>
+                        <li><?php _e('Go to the OAuth App Creation Page on bit.ly at ','inline-tweet-sharer'); ?> <a href="https://bitly.com/a/oauth_apps">https://bitly.com/a/oauth_apps</a></li>
+                        <li><?php _e('Click the "Get Registration Code" button to get a registration code emailed To You.','inline-tweet-sharer'); ?></li>
+                        <li><?php _e('Go to your email and click the link on the email sent to you.','inline-tweet-sharer'); ?></li>
+                        <li><?php _e('You will be sent to the bitly.com create application page. On this page, add the following:-','inline-tweet-sharer'); ?></li>
+                        <ul>
+                            <li><?php _e('For Application Name, put', 'inline-tweet-sharer'); ?> <strong><?php echo get_bloginfo('name'); ?></strong></li>
+                            <li><?php _e('For Application Link, put', 'inline-tweet-sharer'); ?> <strong><?php echo get_bloginfo('url'); ?></strong></li>
+                            <li><?php _e('For Redirect URIs, put', 'inline-tweet-sharer'); ?> <strong><?php echo get_bloginfo('url'); ?></strong></li>
+                            <li><?php _e('Put anything you wish for the "Brief description of your application".', 'inline-tweet-sharer'); ?></li>
+                        </ul>
+                        <li><?php _e('When created, on the Generate Access Token, confirm your password and click "Generate Token".','inline-tweet-sharer'); ?></li>
+                        <li><?php _e('Add your Generic Access Token Below.','inline-tweet-sharer'); ?></li>
+                    </ol>
+                    <p><strong><?php _e('Still Struggling?', 'inline-tweet-sharer'); ?></strong> <?php _e('You can read a complete guide (with pictures!) on the ','inline-tweet-sharer'); ?><a href="http://winwar.co.uk/plugins/inline-tweet-sharer/#bitlyintegration?utm_source=plugins&utm_medium=settingspage&utm_campaign=inlinetweetsharer"><?php _e('Inline Tweet Sharer Plugin Page','inline-tweet-sharer'); ?></a>.</p>
+                    <table class="form-table">
+                        <tbody>
+                            <tr valign="top">
+                                <th scope="row" style="width:400px"><label for="inline-tweet-sharer-bitly"><?php _e('Enable Bitly Integration','inline-tweet-sharer'); ?>:</label></th>
+                                <td><input type="checkbox" name="inline-tweet-sharer-bitly" id="inline-tweet-sharer-bitly" value="1" <?php if (get_option('inline-tweet-sharer-bitly') == 1) { echo "checked"; } ?> /></td>
+                            </tr>
+                            <tr valign="top">
+                                <th scope="row" style="width:400px"><label for="inline-tweet-sharer-bitlyapikey"><?php _e('Your Generic Access Token','inline-tweet-sharer'); ?>:</label></th>
+                                <td><input type="text" name="inline-tweet-sharer-bitlyapikey" id="inline-tweet-sharer-bitlyapikey" class="regular-text code" value="<?php echo get_option('inline-tweet-sharer-bitlyapikey'); ?>" />
+                                </td>
+                            </tr>
+                            <tr valign="top">
+                                <th scope="row" style="width:400px"><label for="inline-tweet-sharer-urlshortened"><?php _e('Enter Your Shortened URL','inline-tweet-sharer'); ?>:</label></th>
+                                <td>
+                                <select name="inline-tweet-sharer-urlshortened" id="inline-tweet-sharer-urlshortened">
+                                    <option value="bit.ly" <?php if ("bit.ly" == get_option('inline-tweet-sharer-urlshortened')) { echo "selected"; } ?>>bit.ly</option>
+                                    <option value="bitly.com" <?php if ("bitly.com" == get_option('inline-tweet-sharer-urlshortened')) { echo "selected"; } ?>>bitly.com</option>
+                                    <option value="j.mp" <?php if ("j.mp" == get_option('inline-tweet-sharer-urlshortened')) { echo "selected"; } ?>>j.mp</option>
+                                </select>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
                     <input type="hidden" name="action" value="update" />
                     <input type="hidden" name="page_options" value="inline-tweet-sharer-default" />
 
@@ -290,6 +346,9 @@ function inline_tweet_sharer_process() { // whitelist options
   register_setting( 'inline-tweet-sharer-group', 'inline-tweet-sharer-marker' );
   register_setting( 'inline-tweet-sharer-group', 'inline-tweet-sharer-capitalise' );
   register_setting( 'inline-tweet-sharer-group', 'inline-tweet-sharer-extraclass' );
+  register_setting( 'inline-tweet-sharer-group', 'inline-tweet-sharer-bitly' );
+  register_setting( 'inline-tweet-sharer-group', 'inline-tweet-sharer-bitlyapikey' );
+  register_setting( 'inline-tweet-sharer-group', 'inline-tweet-sharer-urlshortened' );
 }
 
 /* THIS FUNCTION ADDS A BUTTON TO WORDPRESS' TINYMCE TO SHOW THE TWITTER BUTTON AND ALLOWERS USERS TO CLICK TO ADD THE SHORTCODE */

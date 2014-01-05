@@ -38,6 +38,10 @@ To contribute a translation, please [contact me](http://winwar.co.uk/contact-us/
 
 Changelog
 =========
+1.3
+---
+* Added bit.ly Integration.
+
 1.2.1
 -----
 * Bug fix so that special characters are encoded in the URL.
