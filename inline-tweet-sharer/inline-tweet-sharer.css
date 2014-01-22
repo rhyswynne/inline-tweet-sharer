@@ -30,3 +30,7 @@ a:hover.inline-twitter-link span
     background-repeat: no-repeat;
 }
 
+.inline-twitter-link .dashicons
+{
+    line-height:inherit !important;
+}
