@@ -3,7 +3,7 @@
 Plugin Name:  Inline Tweet Sharer
 Plugin URI: http://winwar.co.uk/plugins/inline-tweet-sharer/
 Description:  Create twitter links on your site that tweet the anchor text - for memorable quotes to help increase social media views, similar to the New York Times.
-Version:      1.3
+Version:      1.4
 Author:       Rhys Wynne
 Author URI:   http://winwar.co.uk/
 
@@ -98,7 +98,13 @@ function inline_tweet_sharer_create_tweet($prefix = "", $tweeter = "", $suffix =
 
     if ("1" == get_option('inline-tweet-sharer-marker'))
     {
-        $link .= ' <span> </span>';
+        if ("1" == get_option('inline-tweet-sharer-dashicons'))
+        {
+            $link .= ' <div class="dashicons dashicons-twitter"></div>';
+        } else {
+            $link .= ' <span> </span>';   
+        }
+
     }
     
     $link .= "</a>";
@@ -127,6 +133,11 @@ if ( is_admin() ){ // admin actions
     wp_register_style( 'inline-tweet-sharer-style', plugins_url('inline-tweet-sharer.css', __FILE__) );
     wp_enqueue_style( 'inline-tweet-sharer-style' );
     wp_enqueue_script('inline-tweet-sharer-js', plugins_url('inline-tweet-sharer.js', __FILE__));
+    
+    if ("1" == get_option('inline-tweet-sharer-dashicons'))
+    {
+        wp_enqueue_style( 'dashicons' );
+    }
 }
 
 function inline_tweet_sharer_add_admin_stylesheet() {
@@ -192,6 +203,11 @@ function inline_tweet_sharer_options() {
                         <tr valign="top">
                             <th scope="row" style="width:400px"><label for="inline-tweet-sharer-marker"><?php _e('Mark Twitter Links','inline-tweet-sharer'); ?>:</label></th>
                             <td><input type="checkbox" name="inline-tweet-sharer-marker" id="inline-tweet-sharer-marker" value="1" <?php if (get_option('inline-tweet-sharer-marker') == 1) { echo "checked"; } ?> /></td>
+                        </tr>
+
+                        <tr valign="top">
+                            <th scope="row" style="width:400px"><label for="inline-tweet-sharer-dashicons"><?php _e('Use Dashicons','inline-tweet-sharer'); ?>:</label></th>
+                            <td><input type="checkbox" name="inline-tweet-sharer-dashicons" id="inline-tweet-sharer-dashicons" value="1" <?php if (get_option('inline-tweet-sharer-dashicons') == 1) { echo "checked"; } ?> /></td>
                         </tr>
 
                         <tr valign="top">
@@ -344,6 +360,7 @@ function inline_tweet_sharer_process() { // whitelist options
 
   register_setting( 'inline-tweet-sharer-group', 'inline-tweet-sharer-default' );
   register_setting( 'inline-tweet-sharer-group', 'inline-tweet-sharer-marker' );
+  register_setting( 'inline-tweet-sharer-group', 'inline-tweet-sharer-dashicons' );
   register_setting( 'inline-tweet-sharer-group', 'inline-tweet-sharer-capitalise' );
   register_setting( 'inline-tweet-sharer-group', 'inline-tweet-sharer-extraclass' );
   register_setting( 'inline-tweet-sharer-group', 'inline-tweet-sharer-bitly' );
@@ -397,5 +414,6 @@ function inline_tweet_sharer_shortcode( $atts, $content = null ) {
  
    return $tweetlink;
 }
+
 
 ?>

@@ -20,7 +20,7 @@ function inlinetweetsharer(content) {
                         inlinetweetsharer(ed.selection.getContent())
                         );
                 },
-                image: url + "/twitter.png"
+                //image: url + "/twitter.png"
             });
         },
 
