@@ -3,7 +3,7 @@
 Plugin Name:  Inline Tweet Sharer
 Plugin URI: http://winwar.co.uk/plugins/inline-tweet-sharer/
 Description:  Create twitter links on your site that tweet the anchor text - for memorable quotes to help increase social media views, similar to the New York Times.
-Version:      1.4
+Version:      1.4.1
 Author:       Rhys Wynne
 Author URI:   http://winwar.co.uk/
 
@@ -100,9 +100,9 @@ function inline_tweet_sharer_create_tweet($prefix = "", $tweeter = "", $suffix =
     {
         if ("1" == get_option('inline-tweet-sharer-dashicons'))
         {
-            $link .= ' <div class="dashicons dashicons-twitter"></div>';
+            $link .= ' <span class="dashicons dashicons-twitter dashicons-inline-tweet-sharer"></span>';
         } else {
-            $link .= ' <span> </span>';   
+            $link .= ' <span class="non-dashicons"> </span>';   
         }
 
     }

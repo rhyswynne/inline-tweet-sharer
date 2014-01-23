@@ -4,7 +4,7 @@ Plugin Name:  Inline Tweet Sharer
 Plugin URI: http://winwar.co.uk/plugins/inline-tweet-sharer/  
 Donate link: http://winwar.co.uk/plugins/inline-tweet-sharer/#donate 
 Description: Create twitter links on your site that tweet memorable quotes in your text to help increase social media views, similar to the New York Times.
-Version:      1.4
+Version:      1.4.1
 Author:       Rhys Wynne
 Author URI:   http://winwar.co.uk/
 License: GPLv2 or later
@@ -15,7 +15,7 @@ Link:
 Tags: twitter, social media, social media marketing, social media promotion, tweet, new york times
 Requires at least: 3.8
 Tested up to: 3.8
-Stable tag: 1.2.1
+Stable tag: 1.4.1
 
 Description
 ===========
@@ -38,6 +38,10 @@ To contribute a translation, please [contact me](http://winwar.co.uk/contact-us/
 
 Changelog
 =========
+1.4.1
+-----
+* Fixed a few display issues that made Inline Tweet Sharer not, well, inline when using dashicons.
+
 1.4
 ---
 * Integrated dashicons so WordPress v3.8+ dashboards look cleaner.

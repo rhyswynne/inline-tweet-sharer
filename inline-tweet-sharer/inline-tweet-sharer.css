@@ -5,7 +5,7 @@ a.inline-twitter-link
     text-decoration: none;
 }
 
-a.inline-twitter-link span
+a.inline-twitter-link span.non-dashicons
 {
     display: inline-block;
     background-image: url('twitter-bg.png');
@@ -20,7 +20,7 @@ a:hover.inline-twitter-link
     background: none repeat scroll 0% 0% rgb(226, 241, 249);   
 }
 
-a:hover.inline-twitter-link span
+a:hover.inline-twitter-link span.non-dashicons
 {
     display: inline-block; 
     width: 14px;
@@ -28,9 +28,12 @@ a:hover.inline-twitter-link span
     background-color: rgb(226, 241, 249);
     background-image: url('twitter-bg-hover.png');
     background-repeat: no-repeat;
+
 }
 
 .inline-twitter-link .dashicons
 {
-    line-height:inherit !important;
+    line-height:inherit;
+    font-size: inherit;
+    text-decoration: none;
 }
