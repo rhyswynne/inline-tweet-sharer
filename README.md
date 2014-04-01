@@ -38,6 +38,14 @@ To contribute a translation, please [contact me](http://winwar.co.uk/contact-us/
 
 Changelog
 =========
+1.4.3
+-----
+* Fix to Dashicons for WordPress 3.9 (post TinyMCE 4.0).
+
+1.4.2
+-----
+* Fixed Dashicons in admin to be compatible with 3.9 (internal release)
+
 1.4.1
 -----
 * Fixed a few display issues that made Inline Tweet Sharer not, well, inline when using dashicons.
