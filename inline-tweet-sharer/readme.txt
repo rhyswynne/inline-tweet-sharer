@@ -43,6 +43,12 @@ Why don't you?
 * Follow us on Social Media, such as [Facebook](https://www.facebook.com/winwaruk), [Twitter](https://twitter.com/winwaruk) or [Google+](https://plus.google.com/+WinwarCoUk)
 * [Send us an email](http://winwar.co.uk/contact-us/)! We like hearing from plugin users.
 
+= For Support =
+We offer support in two places:-
+
+* Support on the [WordPress.org Support Board](http://wordpress.org/support/plugin/inline-tweet-sharer)
+* A [priority support forum](http://winwar.co.uk/priority-support/), which offers same-day responses.
+
 = On Github =
 This project is now on github, [you can view the repository here](https://github.com/rhyswynne/inline-tweet-sharer/). There are other versions, but this is the one I've put up, so where all the developmental will be tracked.
 
@@ -127,8 +133,6 @@ The CSS classes for the plugin are the following:-
 * **a.inline-twitter-link span** – style for the twitter logo at the end of the link.
 * **a:hover.inline-twitter-link** – style for the entire link with when hovered over it.
 * **a:hover.inline-twitter-link span** - style for the twitter logo at the end of the link when hovered.
-
-Check out our [CSS Customisation Service](http://winwar.co.uk/plugins/inline-tweet-sharer/#csscustomisation) if you're still struggling.
 
 == Found a Bug? ==
 Any bugs found, please [contact us](http://winwar.co.uk/contact-us/).

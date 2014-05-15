@@ -27,6 +27,13 @@ You can see an example on the [Inline Tweet Sharer Plugin page](http://winwar.co
 
 Styles are already provided, but if you wish we can help you design the plugin to fit your site with our [CSS Customisation Service](http://winwar.co.uk/plugins/inline-tweet-sharer/#csscustomisation)
 
+Support
+-------
+We offer support in two places:-
+
+* Support on the [WordPress.org Support Board](http://wordpress.org/support/plugin/inline-tweet-sharer)
+* A [priority support forum](http://winwar.co.uk/priority-support/), which offers same-day responses.
+
 Translation Credits
 -------------------
 The plugin has been translated to the following languages.
