@@ -4,7 +4,7 @@ Plugin Name:  Inline Tweet Sharer
 Plugin URI: http://winwar.co.uk/plugins/inline-tweet-sharer/  
 Donate link: http://winwar.co.uk/plugins/inline-tweet-sharer/#donate 
 Description: Create twitter links on your site that tweet memorable quotes in your text to help increase social media views, similar to the New York Times.
-Version:      1.4.4
+Version:      1.4.5
 Author:       Rhys Wynne
 Author URI:   http://winwar.co.uk/
 License: GPLv2 or later
@@ -14,8 +14,8 @@ Contributors: rhyswynne
 Link: 
 Tags: twitter, social media, social media marketing, social media promotion, tweet, new york times
 Requires at least: 3.8
-Tested up to: 3.8
-Stable tag: 1.4.4
+Tested up to: 4.1
+Stable tag: 1.4.5
 
 Description
 ===========
@@ -45,6 +45,15 @@ To contribute a translation, please [contact me](http://winwar.co.uk/contact-us/
 
 Changelog
 =========
+1.4.5
+-----
+* Fixed WP_DEBUG notices in the back end - calling has_cap with a proper capability, rather than by user level.
+* Fixed WP_DEBUG notices in the front end - calling the script enqueuing in the correct place, rather than at init.
+* Called admin_enqueue_scripts to enqueue the scripts, rather than using admin_init
+* Added blank variables for Prefix/Suffix/Tweeter to stop the "Underfined Variable" notice in WP_DEBUG.
+
+Total Time Taken - 23 minutes
+
 1.4.4
 -----
 * Changed version number of admin CSS as people were having issues with it updating.
