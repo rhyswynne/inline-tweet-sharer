@@ -306,6 +306,15 @@ function inline_tweet_sharer_options() {
         <div class="pea_admin_main_right">
             <div class="pea_admin_box">
 
+                <h2><?php _e( 'Inline Tweet Sharer Survey', 'inline-tweet-sharer' ); ?></h2>
+                <p><?php _e( 'We are running a survey for Inline Tweet Sharer Users to get a basic idea on what user\'s want. If you have time, please fill in a short (2 minute) survey, we will be incredibly greatful.', 'inline-tweet-sharer' ); ?></p>
+                <a href="https://docs.google.com/a/winwar.co.uk/forms/d/1Hg5AIthPIoLAhmi161P6hweCeuBATY_5KrhsqJqG0QI/viewform" target="_blank"><button type="submit" class="pea_admin_green"><?php _e( 'Fill in the Survey', 'inline-tweet-sharer' ); ?></button></a><br><br>
+
+                
+            </div>
+
+            <div class="pea_admin_box">
+
                 <h2><?php _e( 'Like this Plugin?', 'inline-tweet-sharer' ); ?></h2>
                 <a href="<?php echo ITS_EXTEND_URL; ?>" target="_blank"><button type="submit" class="pea_admin_green"><?php _e( 'Rate this plugin', 'inline-tweet-sharer' ); ?> &#9733; &#9733; &#9733; &#9733; &#9733;</button></a><br><br>
 

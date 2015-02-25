@@ -59,7 +59,7 @@ This project is now on github, [you can view the repository here](https://github
 = 1.5 =
 * Added the ability to set a default prefix and suffix for the tweets.
 
-Total Time Taken - 23 minutes
+Total Time Taken - 27 minutes
 
 = 1.4.5 =
 * Fixed WP_DEBUG notices in the back end - calling has_cap with a proper capability, rather than by user level.
