@@ -26,6 +26,8 @@ You can see an example on the [Inline Tweet Sharer Plugin page](http://winwar.co
 
 For more information, please visit the [Inline Tweet Sharer Documentation page](http://winwar.co.uk/documentation/inline-tweet-sharer/).
 
+**We are running a survey right now to help us determine where to go with this project. We'd love your feedback. If you have time, [please fill in the survey here](https://docs.google.com/forms/d/1Hg5AIthPIoLAhmi161P6hweCeuBATY_5KrhsqJqG0QI/viewform).**
+
 = Translation Credits =
 The plugin has been translated to the following languages.
 
