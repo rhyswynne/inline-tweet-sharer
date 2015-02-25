@@ -25,7 +25,7 @@ Links can either be highlighted as Twitter links or look the same as regular lin
 
 You can see an example on the [Inline Tweet Sharer Plugin page](http://winwar.co.uk/plugins/inline-tweet-sharer/).
 
-Styles are already provided, but if you wish we can help you design the plugin to fit your site with our [CSS Customisation Service](http://winwar.co.uk/plugins/inline-tweet-sharer/#csscustomisation)
+For further information, please see the [Inline Tweet Sharer Documentation page](http://winwar.co.uk/documentation/inline-tweet-sharer/).
 
 Support
 -------
@@ -45,6 +45,10 @@ To contribute a translation, please [contact me](http://winwar.co.uk/contact-us/
 
 Changelog
 =========
+1.5
+---
+* Added the ability to set a default prefix and suffix for the tweets.
+
 1.4.5
 -----
 * Fixed WP_DEBUG notices in the back end - calling has_cap with a proper capability, rather than by user level.

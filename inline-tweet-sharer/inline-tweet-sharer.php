@@ -3,7 +3,7 @@
 Plugin Name:  Inline Tweet Sharer
 Plugin URI: http://winwar.co.uk/plugins/inline-tweet-sharer/
 Description:  Create twitter links on your site that tweet the anchor text - for memorable quotes to help increase social media views, similar to the New York Times.
-Version:      1.4.5
+Version:      1.5
 Author:       Rhys Wynne
 Author URI:   http://winwar.co.uk/
 
@@ -41,12 +41,19 @@ function inline_tweet_sharer_create_tweet( $prefix = "", $tweeter = "", $suffix 
         $tweeter = get_option( 'inline-tweet-sharer-default' );
         $tweeter = str_replace( "@", "", $tweeter );
         $tweetlinkstring .= "RT @" . $tweeter . ": ";
+    } elseif (1 == get_option( 'inline-tweet-sharer-usedefault' ) ) {
+        $prefix = get_option( 'inline-tweet-sharer-dprefix' );
+        $tweetlinkstring .= $prefix . ' ';
     }
+
     $content = strip_tags( $content );
     $tweetlinkstring .= $content . ' ';
 
     if ( "" != $suffix && "null" != $suffix ) {
         $tweetlinkstring .= $suffix;
+    } elseif (1 == get_option( 'inline-tweet-sharer-usedefault' ) ) {
+        $prefix = get_option( 'inline-tweet-sharer-dsuffix' );
+        $tweetlinkstring .= $prefix . ' ';
     }
 
     if ( strlen( $tweetlinkstring ) > 116 ) {
@@ -150,7 +157,7 @@ function inline_tweet_sharer_menus() {
 
 /* THIS FUNCTION CREATES THE OPTIONS PAGE WITH ALL OPTIONS */
 function inline_tweet_sharer_options() {
-?>
+    ?>
     <div class="pea_admin_wrap">
         <div class="pea_admin_top">
             <h1><?php echo ITS_PLUGIN_NAME?> <small> - <?php echo ITS_PLUGIN_TAGLINE?></small></h1>
@@ -217,6 +224,30 @@ function inline_tweet_sharer_options() {
                                 </td>
                             </tr>
 
+                        </tbody>
+                    </table>
+
+                    <h3><?php _e( 'Default Options', 'inline-tweet-sharer' ); ?></h3>
+
+                    <table class="form-table">
+                        <tbody>
+                            <tr valign="top">
+                                <th scope="row" style="width:400px"><label for="inline-tweet-sharer-usedefault"><?php _e( 'Use Default Prefix?', 'inline-tweet-sharer' ); ?>:</label></th>
+                                <td>
+                                    <input type="checkbox" name="inline-tweet-sharer-usedefault" id="inline-tweet-sharer-usedefault" value="1" <?php checked( get_option( 'inline-tweet-sharer-usedefault' ), 1, true ); ?> />
+                                    <br /><?php _e( 'If ticked, the prefix/suffix below will be used if not specified.', 'inline-tweet-sharer' ); ?>
+                                </td>
+                            </tr>
+                            <tr valign="top">
+                                <th scope="row" style="width:400px"><label for="inline-tweet-sharer-dprefix"><?php _e( 'Default Prefix', 'inline-tweet-sharer' ); ?>:</label></th>
+                                <td><input type="text" name="inline-tweet-sharer-dprefix" id="inline-tweet-sharer-dprefix" class="regular-text code" value="<?php echo get_option( 'inline-tweet-sharer-dprefix' ); ?>" />
+                                </td>
+                            </tr>
+                            <tr valign="top">
+                                <th scope="row" style="width:400px"><label for="inline-tweet-sharer-dsuffix"><?php _e( 'Default Suffix', 'inline-tweet-sharer' ); ?>:</label></th>
+                                <td><input type="text" name="inline-tweet-sharer-dsuffix" id="inline-tweet-sharer-dsuffix" class="regular-text code" value="<?php echo get_option( 'inline-tweet-sharer-dsuffix' ); ?>" />
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
 
@@ -330,10 +361,10 @@ function inline_tweet_sharer_options() {
                 <h2><?php _e( 'About the Author', 'inline-tweet-sharer' ); ?></h2>
 
                 <?php
-    $default = "http://reviews.evanscycles.com/static/0924-en_gb/noAvatar.gif";
-    $size = 70;
-    $rhys_url = "http://www.gravatar.com/avatar/" . md5( strtolower( trim( "rhys@rhyswynne.co.uk" ) ) ) . "?d=" . urlencode( $default ) . "&s=" . $size;
-?>
+                $default = "http://reviews.evanscycles.com/static/0924-en_gb/noAvatar.gif";
+                $size = 70;
+                $rhys_url = "http://www.gravatar.com/avatar/" . md5( strtolower( trim( "rhys@rhyswynne.co.uk" ) ) ) . "?d=" . urlencode( $default ) . "&s=" . $size;
+                ?>
 
                 <p class="pea_admin_clear"><img class="pea_admin_fl" src="<?php echo $rhys_url; ?>" alt="Rhys Wynne" /> <h3>Rhys Wynne</h3><br><a href="https://twitter.com/rhyswynne" class="twitter-follow-button" data-show-count="false">Follow @rhyswynne</a>
                     <div class="fb-subscribe" data-href="https://www.facebook.com/rhysywynne" data-layout="button_count" data-show-faces="false" data-width="220"></div>
@@ -358,6 +389,9 @@ function inline_tweet_sharer_process() { // whitelist options
     register_setting( 'inline-tweet-sharer-group', 'inline-tweet-sharer-dashicons' );
     register_setting( 'inline-tweet-sharer-group', 'inline-tweet-sharer-capitalise' );
     register_setting( 'inline-tweet-sharer-group', 'inline-tweet-sharer-extraclass' );
+    register_setting( 'inline-tweet-sharer-group', 'inline-tweet-sharer-usedefault' );
+    register_setting( 'inline-tweet-sharer-group', 'inline-tweet-sharer-dprefix' );
+    register_setting( 'inline-tweet-sharer-group', 'inline-tweet-sharer-dsuffix' );
     register_setting( 'inline-tweet-sharer-group', 'inline-tweet-sharer-bitly' );
     register_setting( 'inline-tweet-sharer-group', 'inline-tweet-sharer-bitlyapikey' );
     register_setting( 'inline-tweet-sharer-group', 'inline-tweet-sharer-urlshortened' );
@@ -404,10 +438,10 @@ function inline_tweet_sharer_shortcode( $atts, $content = null ) {
     $tweeter = "";
 
     extract( shortcode_atts( array(
-                'prefix' => $prefix,
-                'tweeter' => $tweeter,
-                'suffix' => $suffix,
-            ), $atts ) );
+        'prefix' => $prefix,
+        'tweeter' => $tweeter,
+        'suffix' => $suffix,
+        ), $atts ) );
 
     $tweetlink = inline_tweet_sharer_create_tweet( esc_attr( $prefix ), esc_attr( $tweeter ), esc_attr( $suffix ), $content );
 
