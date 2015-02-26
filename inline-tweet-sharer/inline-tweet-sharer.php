@@ -3,7 +3,7 @@
 Plugin Name:  Inline Tweet Sharer
 Plugin URI: http://winwar.co.uk/plugins/inline-tweet-sharer/
 Description:  Create twitter links on your site that tweet the anchor text - for memorable quotes to help increase social media views, similar to the New York Times.
-Version:      1.5
+Version:      1.5.1
 Author:       Rhys Wynne
 Author URI:   http://winwar.co.uk/
 
@@ -217,13 +217,6 @@ function inline_tweet_sharer_options() {
                                 <td><input type="checkbox" name="inline-tweet-sharer-capitalise" id="inline-tweet-sharer-capitalise" value="1" <?php if ( get_option( 'inline-tweet-sharer-capitalise' ) == 1 ) { echo "checked"; } ?> /></td>
                             </tr>
 
-                            <tr valign="top">
-                                <th scope="row" style="width:400px"><label for="inline-tweet-sharer-extraclass"><?php _e( 'Added class for the wrapper div (advanced)', 'inline-tweet-sharer' ); ?>:</label></th>
-                                <td><input type="text" name="inline-tweet-sharer-extraclass" id="inline-tweet-sharer-extraclass" class="regular-text code" value="<?php echo get_option( 'inline-tweet-sharer-extraclass' ); ?>" />
-                                    <br /><?php _e( 'Use this to add an extra class to the wrapper, use this to control what your tweet link looks like.', 'inline-tweet-sharer' ); ?>
-                                </td>
-                            </tr>
-
                         </tbody>
                     </table>
 
@@ -252,6 +245,9 @@ function inline_tweet_sharer_options() {
                     </table>
 
                     <h3><?php _e( 'Advanced Options', 'inline-tweet-sharer' ); ?></h3>
+
+
+
                     <p><?php _e( 'To connect your bit.ly account you need an API key.', 'inline-tweet-sharer' ); ?></p>
                     <p><strong><?php _e( 'To get your API Key:-', 'inline-tweet-sharer' ); ?></strong></p>
                     <ol>
@@ -268,7 +264,7 @@ function inline_tweet_sharer_options() {
                         <li><?php _e( 'When created, on the Generate Access Token, confirm your password and click "Generate Token".', 'inline-tweet-sharer' ); ?></li>
                         <li><?php _e( 'Add your Generic Access Token Below.', 'inline-tweet-sharer' ); ?></li>
                     </ol>
-                    <p><strong><?php _e( 'Still Struggling?', 'inline-tweet-sharer' ); ?></strong> <?php _e( 'You can read a complete guide (with pictures!) on the ', 'inline-tweet-sharer' ); ?><a href="http://winwar.co.uk/plugins/inline-tweet-sharer/#bitlyintegration?utm_source=plugins&utm_medium=settingspage&utm_campaign=inlinetweetsharer"><?php _e( 'Inline Tweet Sharer Plugin Page', 'inline-tweet-sharer' ); ?></a>.</p>
+                    <p><strong><?php _e( 'Still Struggling?', 'inline-tweet-sharer' ); ?></strong> <?php _e( 'You can read a complete guide (with pictures!) on the ', 'inline-tweet-sharer' ); ?><a href="http://winwar.co.uk/documentation/inline-tweet-sharer/#5?utm_source=plugins&utm_medium=settingspage&utm_campaign=inlinetweetsharer"><?php _e( 'Inline Tweet Sharer Plugin Page', 'inline-tweet-sharer' ); ?></a>.</p>
                     <table class="form-table">
                         <tbody>
                             <tr valign="top">
@@ -288,6 +284,12 @@ function inline_tweet_sharer_options() {
                                         <option value="bitly.com" <?php if ( "bitly.com" == get_option( 'inline-tweet-sharer-urlshortened' ) ) { echo "selected"; } ?>>bitly.com</option>
                                         <option value="j.mp" <?php if ( "j.mp" == get_option( 'inline-tweet-sharer-urlshortened' ) ) { echo "selected"; } ?>>j.mp</option>
                                     </select>
+                                </td>
+                            </tr>
+                            <tr valign="top">
+                                <th scope="row" style="width:400px"><label for="inline-tweet-sharer-extraclass"><?php _e( 'Added class for the wrapper div (advanced)', 'inline-tweet-sharer' ); ?>:</label></th>
+                                <td><input type="text" name="inline-tweet-sharer-extraclass" id="inline-tweet-sharer-extraclass" class="regular-text code" value="<?php echo get_option( 'inline-tweet-sharer-extraclass' ); ?>" />
+                                    <br /><?php _e( 'Use this to add an extra class to the wrapper, use this to control what your tweet link looks like.', 'inline-tweet-sharer' ); ?>
                                 </td>
                             </tr>
                         </tbody>
