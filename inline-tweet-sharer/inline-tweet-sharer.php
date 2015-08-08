@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name:  Inline Tweet Sharer
-Plugin URI: http://winwar.co.uk/plugins/inline-tweet-sharer/
+Plugin URI: http://winwar.co.uk/plugins/inline-tweet-sharer/?utm_source=plugin-link&utm_medium=plugin&utm_campaign=inlinetweetsharer
 Description:  Create twitter links on your site that tweet the anchor text - for memorable quotes to help increase social media views, similar to the New York Times.
-Version:      1.5.1
+Version:      1.5.2
 Author:       Rhys Wynne
-Author URI:   http://winwar.co.uk/
+Author URI:   http://winwar.co.uk/?utm_source=author-link&utm_medium=plugin&utm_campaign=inlinetweetsharer
 
 */
 
@@ -264,7 +264,7 @@ function inline_tweet_sharer_options() {
                         <li><?php _e( 'When created, on the Generate Access Token, confirm your password and click "Generate Token".', 'inline-tweet-sharer' ); ?></li>
                         <li><?php _e( 'Add your Generic Access Token Below.', 'inline-tweet-sharer' ); ?></li>
                     </ol>
-                    <p><strong><?php _e( 'Still Struggling?', 'inline-tweet-sharer' ); ?></strong> <?php _e( 'You can read a complete guide (with pictures!) on the ', 'inline-tweet-sharer' ); ?><a href="http://winwar.co.uk/documentation/inline-tweet-sharer/#5?utm_source=plugins&utm_medium=settingspage&utm_campaign=inlinetweetsharer"><?php _e( 'Inline Tweet Sharer Plugin Page', 'inline-tweet-sharer' ); ?></a>.</p>
+                    <p><strong><?php _e( 'Still Struggling?', 'inline-tweet-sharer' ); ?></strong> <?php _e( 'You can read a complete guide (with pictures!) on the ', 'inline-tweet-sharer' ); ?><a href="http://winwar.co.uk/documentation/inline-tweet-sharer/#5?utm_source=settings-page&utm_medium=plugin&utm_campaign=inlinetweetsharer"><?php _e( 'Inline Tweet Sharer Plugin Page', 'inline-tweet-sharer' ); ?></a>.</p>
                     <table class="form-table">
                         <tbody>
                             <tr valign="top">
