@@ -45,9 +45,15 @@ To contribute a translation, please [contact me](http://winwar.co.uk/contact-us/
 
 Changelog
 =========
-1.6
----
-* Changed div to span
+1.5.2
+-----
+* Test in 4.3
+* Changed the header to reflect the new styles.
+* Added internal link tracking.
+
+1.5.1
+-----
+* Moved the "Extra Class" to the "Advanced" area.
 
 1.5
 ---

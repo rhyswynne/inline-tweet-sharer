@@ -58,6 +58,11 @@ This project is now on github, [you can view the repository here](https://github
 1. Example of how the twitter feed appears in your site.
 
 == Changelog ==
+= 1.5.2 =
+* Test in 4.3
+* Changed the header to reflect the new styles.
+* Added internal link tracking.
+
 = 1.5.1 =
 * Moved the "Extra Class" to the "Advanced" area.
 
