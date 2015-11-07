@@ -45,6 +45,10 @@ To contribute a translation, please [contact me](http://winwar.co.uk/contact-us/
 
 Changelog
 =========
+1.5.3
+-----
+* Fixed a bug to prevent it returning to the top of the page when clicked.
+
 1.5.2
 -----
 * Test in 4.3
