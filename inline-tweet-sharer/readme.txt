@@ -22,9 +22,9 @@ Inline Tweet Sharer is a plugin that allows you to easily and simply create link
 
 Links can either be highlighted as Twitter links or look the same as regular links, and there is a Rich Text Editor button you can use to click and easily add the links.
 
-You can see an example on the [Inline Tweet Sharer Plugin page](http://winwar.co.uk/plugins/inline-tweet-sharer/).
+You can see an example on the [Inline Tweet Sharer Plugin page](http://winwar.co.uk/plugins/inline-tweet-sharer/?utm_source=description&utm_medium=wordpressorgreadme&utm_campaign=inlinetweetsharer).
 
-For more information, please visit the [Inline Tweet Sharer Documentation page](http://winwar.co.uk/documentation/inline-tweet-sharer/).
+For more information, please visit the [Inline Tweet Sharer Documentation page](http://winwar.co.uk/documentation/inline-tweet-sharer/?utm_source=description&utm_medium=wordpressorgreadme&utm_campaign=inlinetweetsharer).
 
 **We are running a survey right now to help us determine where to go with this project. We'd love your feedback. If you have time, [please fill in the survey here](https://docs.google.com/forms/d/1Hg5AIthPIoLAhmi161P6hweCeuBATY_5KrhsqJqG0QI/viewform).**
 
@@ -36,20 +36,20 @@ The plugin has been translated to the following languages.
 To contribute a translation, please [contact me](http://winwar.co.uk/contact-us/)!
 
 = About Winwar Media =
-This plugin is made by [**Winwar Media**](http://winwar.co.uk/), a WordPress Development and Training Agency in Manchester, UK.
+This plugin is made by [**Winwar Media**](http://winwar.co.uk/?utm_source=aboutwinwarmedia&utm_medium=wordpressorgreadme&utm_campaign=inlinetweetsharer), a WordPress Development and Training Agency in Manchester, UK.
 
 Why don't you?
 
-* Check out our book, [bbPress Complete](http://winwar.co.uk/books/bbpress-complete/)
-* Check out our other [WordPress Plugins](http://winwar.co.uk/plugins/), including [WP Email Capture](http://wpemailcapture.com)
+* Check out our book, [bbPress Complete](http://winwar.co.uk/books/bbpress-complete/?utm_source=aboutwinwarmedia&utm_medium=wordpressorgreadme&utm_campaign=inlinetweetsharer)
+* Check out our other [WordPress Plugins](http://winwar.co.uk/plugins/?utm_source=aboutwinwarmedia&utm_medium=wordpressorgreadme&utm_campaign=inlinetweetsharer), including [WP Email Capture](http://wpemailcapture.com)
 * Follow us on Social Media, such as [Facebook](https://www.facebook.com/winwaruk), [Twitter](https://twitter.com/winwaruk) or [Google+](https://plus.google.com/+WinwarCoUk)
-* [Send us an email](http://winwar.co.uk/contact-us/)! We like hearing from plugin users.
+* [Send us an email](http://winwar.co.uk/contact-us/?utm_source=aboutwinwarmedia&utm_medium=wordpressorgreadme&utm_campaign=inlinetweetsharer)! We like hearing from plugin users.
 
 = For Support =
 We offer support in two places:-
 
 * Support on the [WordPress.org Support Board](http://wordpress.org/support/plugin/inline-tweet-sharer)
-* A [priority support forum](http://winwar.co.uk/priority-support/), which offers same-day responses.
+* A [priority support forum](http://winwar.co.uk/priority-support/?utm_source=support&utm_medium=wordpressorgreadme&utm_campaign=inlinetweetsharer), which offers same-day responses.
 
 = On Github =
 This project is now on github, [you can view the repository here](https://github.com/rhyswynne/inline-tweet-sharer/). There are other versions, but this is the one I've put up, so where all the developmental will be tracked.
@@ -58,6 +58,9 @@ This project is now on github, [you can view the repository here](https://github
 1. Example of how the twitter feed appears in your site.
 
 == Changelog ==
+= 1.5.3 =
+* Fixed a bug to prevent it returning to the top of the page when clicked.
+
 = 1.5.2 =
 * Test in 4.3
 * Changed the header to reflect the new styles.
@@ -158,4 +161,4 @@ The CSS classes for the plugin are the following:-
 * **a:hover.inline-twitter-link span** - style for the twitter logo at the end of the link when hovered.
 
 == Found a Bug? ==
-Any bugs found, please [contact us](http://winwar.co.uk/contact-us/).
+Any bugs found, please [contact us](http://winwar.co.uk/contact-us/?utm_source=foundabug&utm_medium=wordpressorgreadme&utm_campaign=inlinetweetsharer).

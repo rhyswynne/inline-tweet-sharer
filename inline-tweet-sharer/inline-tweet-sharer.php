@@ -1,9 +1,9 @@
 <?php
 /*
 Plugin Name:  Inline Tweet Sharer
-Plugin URI: http://winwar.co.uk/plugins/inline-tweet-sharer/?utm_source=plugin-link&utm_medium=plugin&utm_campaign=inlinetweetsharer
+Plugin URI:   http://winwar.co.uk/plugins/inline-tweet-sharer/?utm_source=plugin-link&utm_medium=plugin&utm_campaign=inlinetweetsharer
 Description:  Create twitter links on your site that tweet the anchor text - for memorable quotes to help increase social media views, similar to the New York Times.
-Version:      1.5.2
+Version:      1.5.3
 Author:       Rhys Wynne
 Author URI:   http://winwar.co.uk/?utm_source=author-link&utm_medium=plugin&utm_campaign=inlinetweetsharer
 
@@ -91,7 +91,7 @@ function inline_tweet_sharer_create_tweet( $prefix = "", $tweeter = "", $suffix 
     $url = 'https://twitter.com/intent/tweet?url=' . urlencode( $permalink ) . '&text=' . $tweetlinkstring;
     $url = str_replace( array( "\n", "\r" ), "", $url );
     $url = str_replace( array( "/" ), "\/", $url );
-    $link .= '" href="#" onclick="inline_tweet_sharer_open_win(\''.$url.'\');"';
+    $link .= ' inline-tweet-click" href="#" onclick="inline_tweet_sharer_open_win(\''.$url.'\');"';
     //$link .= ' href="#" onclick="window.open(\''.$url.'\',\'tweetwindow\',\'width=566,height=592,location=yes,directories=no,channelmode=no,menubar=no,resizable=no,scrollbars=no,status=no,toolbar=no\')"';
     $link .= ' title="'. __( 'Tweet This!', 'inline-tweet-sharer' ).'">' . $content;
 
