@@ -3,7 +3,7 @@
 Plugin Name:  Inline Tweet Sharer
 Plugin URI:   http://winwar.co.uk/plugins/inline-tweet-sharer/?utm_source=plugin-link&utm_medium=plugin&utm_campaign=inlinetweetsharer
 Description:  Create twitter links on your site that tweet the anchor text - for memorable quotes to help increase social media views, similar to the New York Times.
-Version:      1.5.3
+Version:      1.5.4
 Author:       Rhys Wynne
 Author URI:   http://winwar.co.uk/?utm_source=author-link&utm_medium=plugin&utm_campaign=inlinetweetsharer
 
@@ -56,10 +56,12 @@ function inline_tweet_sharer_create_tweet( $prefix = "", $tweeter = "", $suffix 
         $tweetlinkstring .= $prefix . ' ';
     }
 
-    if ( strlen( $tweetlinkstring ) > 116 ) {
-        $tweetlinkstring = substr( $tweetlinkstring, 0, 116 );
-        $tweetlinkstring = preg_replace( '/ [^ ]*$/', ' ...', $tweetlinkstring );
+    if ( ( strlen( utf8_decode( $tweetlinkstring ) ) + strlen( $permalink ) ) > 140 ) { 
+        $tweetlinkstring = substr( $tweetlinkstring, 0, ( 140-( strlen( utf8_decode( $tweetlinkstring ) ) +strlen( $permalink )+3) ) ); 
+        $tweetlinkstring = preg_replace( '/ [^ ]*$/', '...', $tweetlinkstring ); 
     }
+
+
 
     if ( "1" == get_option( 'inline-tweet-sharer-capitalise' ) ) {
         $tweetlinkstring = ucfirst( $tweetlinkstring );
