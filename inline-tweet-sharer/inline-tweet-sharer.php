@@ -140,7 +140,8 @@ function inline_tweet_sharer_add_admin_stylesheet() {
 function inline_tweet_sharer_add_styles() {
     wp_register_style( 'inline-tweet-sharer-style', plugins_url( 'inline-tweet-sharer.css', __FILE__ ) );
     wp_enqueue_style( 'inline-tweet-sharer-style' );
-    wp_enqueue_script( 'inline-tweet-sharer-js', plugins_url( 'inline-tweet-sharer.js', __FILE__ ) );
+	//this needs to depend on jQuery !
+    wp_enqueue_script( 'inline-tweet-sharer-js', plugins_url( 'inline-tweet-sharer.js', __FILE__ ), array('jquery') );
 
     if ( "1" == get_option( 'inline-tweet-sharer-dashicons' ) ) {
         wp_enqueue_style( 'dashicons' );
