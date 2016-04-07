@@ -14,7 +14,7 @@ Link:
 Tags: twitter, social media, social media marketing, social media promotion, tweet, new york times
 Requires at least: 3.8
 Tested up to: 4.4
-Stable tag: 1.5.4
+Stable tag: trunk
 
 == Description ==
 
