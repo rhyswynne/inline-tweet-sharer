@@ -45,6 +45,11 @@ To contribute a translation, please [contact me](http://winwar.co.uk/contact-us/
 
 Changelog
 =========
+1.6
+---
+* Introduced a sponsored feature - the ability to remove spaces before/after the prefix/suffix.
+* Removed a debug error on a variable being used before being defined.
+
 1.5.3
 -----
 * Fixed a bug to prevent it returning to the top of the page when clicked.

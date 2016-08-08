@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name:  Inline Tweet Sharer
-Plugin URI:   http://winwar.co.uk/plugins/inline-tweet-sharer/?utm_source=plugin-link&utm_medium=plugin&utm_campaign=inlinetweetsharer
+Plugin URI:   https://winwar.co.uk/plugins/inline-tweet-sharer/?utm_source=plugin-link&utm_medium=plugin&utm_campaign=inlinetweetsharer
 Description:  Create twitter links on your site that tweet the anchor text - for memorable quotes to help increase social media views, similar to the New York Times.
-Version:      1.5.4
-Author:       Rhys Wynne
-Author URI:   http://winwar.co.uk/?utm_source=author-link&utm_medium=plugin&utm_campaign=inlinetweetsharer
+Version:      1.6
+Author:       Winwar Media
+Author URI:   https://winwar.co.uk/?utm_source=author-link&utm_medium=plugin&utm_campaign=inlinetweetsharer
 
 */
 
@@ -26,12 +26,27 @@ define( "ITS_EXTEND_URL", "http://wordpress.org/plugins/inline-tweet-sharer/" );
 define( "ITS_AUTHOR_TWITTER", "rhyswynne" );
 define( "ITS_DONATE_LINK", "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SBVM5663CHYN4" );
 
-function inline_tweet_sharer_create_tweet( $prefix = "", $tweeter = "", $suffix = "", $content ) {
+function inline_tweet_sharer_create_tweet( $prefix = "", $tweeter = "", $suffix = "", $removespaces, $content ) {
 
     $tweetlinkstring = "";
 
+    if ( $removespaces ) {
+        $spacestring = "";
+    } else {
+        $spacestring = " ";
+    }
+
+    if ( "1" == get_option( 'inline-tweet-sharer-bitly' ) ) {
+        $urlshortener = get_option( 'inline-tweet-sharer-urlshortened' );
+        if ( !$urlshortener ) { $urlshortener = "bit.ly"; }
+        $results = bitly_v3_shorten( get_permalink(), $urlshortener );
+        $permalink = $results['url'];
+    } else {
+        $permalink = get_permalink();
+    }
+
     if ( "" != $prefix && "null" != $prefix ) {
-        $tweetlinkstring .= $prefix . ' ';
+        $tweetlinkstring .= $prefix . $spacestring;
     }
     elseif ( "" != $tweeter && "null" != $tweeter ) {
         $tweeter = str_replace( "@", "", $tweeter );
@@ -43,17 +58,17 @@ function inline_tweet_sharer_create_tweet( $prefix = "", $tweeter = "", $suffix 
         $tweetlinkstring .= "RT @" . $tweeter . ": ";
     } elseif (1 == get_option( 'inline-tweet-sharer-usedefault' ) ) {
         $prefix = get_option( 'inline-tweet-sharer-dprefix' );
-        $tweetlinkstring .= $prefix . ' ';
+        $tweetlinkstring .= $prefix . $spacestring;
     }
 
     $content = strip_tags( $content );
-    $tweetlinkstring .= $content . ' ';
+    $tweetlinkstring .= $content . $spacestring;
 
     if ( "" != $suffix && "null" != $suffix ) {
         $tweetlinkstring .= $suffix;
     } elseif (1 == get_option( 'inline-tweet-sharer-usedefault' ) ) {
         $prefix = get_option( 'inline-tweet-sharer-dsuffix' );
-        $tweetlinkstring .= $prefix . ' ';
+        $tweetlinkstring .= $prefix . $spacestring;
     }
 
     if ( ( strlen( utf8_decode( $tweetlinkstring ) ) + strlen( $permalink ) ) > 140 ) { 
@@ -79,15 +94,6 @@ function inline_tweet_sharer_create_tweet( $prefix = "", $tweeter = "", $suffix 
 
     if ( "1" == get_option( 'inline-tweet-sharer-marker' ) ) {
         $link .= 'inline-twitter-link';
-    }
-
-    if ( "1" == get_option( 'inline-tweet-sharer-bitly' ) ) {
-        $urlshortener = get_option( 'inline-tweet-sharer-urlshortened' );
-        if ( !$urlshortener ) { $urlshortener = "bit.ly"; }
-        $results = bitly_v3_shorten( get_permalink(), $urlshortener );
-        $permalink = $results['url'];
-    } else {
-        $permalink = get_permalink();
     }
 
     $url = 'https://twitter.com/intent/tweet?url=' . urlencode( $permalink ) . '&text=' . $tweetlinkstring;
@@ -242,6 +248,11 @@ function inline_tweet_sharer_options() {
                             <tr valign="top">
                                 <th scope="row" style="width:400px"><label for="inline-tweet-sharer-dsuffix"><?php _e( 'Default Suffix', 'inline-tweet-sharer' ); ?>:</label></th>
                                 <td><input type="text" name="inline-tweet-sharer-dsuffix" id="inline-tweet-sharer-dsuffix" class="regular-text code" value="<?php echo get_option( 'inline-tweet-sharer-dsuffix' ); ?>" />
+                                </td>
+                            </tr>
+                            <tr valign="top">
+                                <th scope="row" style="width:400px"><label for="inline-tweet-sharer-removespaces"><?php _e( 'Remove Spaces between prefix/suffix and tweet?', 'inline-tweet-sharer' ); ?>:</label></th>
+                                <td><input type="checkbox" name="inline-tweet-sharer-removespaces" id="inline-tweet-sharer-removespaces" value="1" <?php checked( 1, get_option( 'inline-tweet-sharer-removespaces' ) ); ?>/>
                                 </td>
                             </tr>
                         </tbody>
@@ -406,6 +417,7 @@ function inline_tweet_sharer_process() { // whitelist options
     register_setting( 'inline-tweet-sharer-group', 'inline-tweet-sharer-usedefault' );
     register_setting( 'inline-tweet-sharer-group', 'inline-tweet-sharer-dprefix' );
     register_setting( 'inline-tweet-sharer-group', 'inline-tweet-sharer-dsuffix' );
+    register_setting( 'inline-tweet-sharer-group', 'inline-tweet-sharer-removespaces' );
     register_setting( 'inline-tweet-sharer-group', 'inline-tweet-sharer-bitly' );
     register_setting( 'inline-tweet-sharer-group', 'inline-tweet-sharer-bitlyapikey' );
     register_setting( 'inline-tweet-sharer-group', 'inline-tweet-sharer-urlshortened' );
@@ -450,14 +462,17 @@ function inline_tweet_sharer_shortcode( $atts, $content = null ) {
     $prefix = "";
     $suffix = "";
     $tweeter = "";
+    $removespaces = get_option( 'inline-tweet-sharer-removespaces' );
+
 
     extract( shortcode_atts( array(
         'prefix' => $prefix,
         'tweeter' => $tweeter,
         'suffix' => $suffix,
+        'removespaces' => $removespaces
         ), $atts ) );
 
-    $tweetlink = inline_tweet_sharer_create_tweet( esc_attr( $prefix ), esc_attr( $tweeter ), esc_attr( $suffix ), $content );
+    $tweetlink = inline_tweet_sharer_create_tweet( esc_attr( $prefix ), esc_attr( $tweeter ), esc_attr( $suffix ), esc_attr( $removespaces ), $content );
 
     return $tweetlink;
 }
