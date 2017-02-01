@@ -45,6 +45,10 @@ To contribute a translation, please [contact me](http://winwar.co.uk/contact-us/
 
 Changelog
 =========
+1.6.1
+-----
+* Auto populate user email addresses to get bug fixes.
+
 1.6
 ---
 * Introduced a sponsored feature - the ability to remove spaces before/after the prefix/suffix.

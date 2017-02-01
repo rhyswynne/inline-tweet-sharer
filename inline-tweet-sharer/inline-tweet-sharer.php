@@ -3,7 +3,7 @@
 Plugin Name:  Inline Tweet Sharer
 Plugin URI:   https://winwar.co.uk/plugins/inline-tweet-sharer/?utm_source=plugin-link&utm_medium=plugin&utm_campaign=inlinetweetsharer
 Description:  Create twitter links on your site that tweet the anchor text - for memorable quotes to help increase social media views, similar to the New York Times.
-Version:      1.6
+Version:      1.6.1
 Author:       Winwar Media
 Author URI:   https://winwar.co.uk/?utm_source=author-link&utm_medium=plugin&utm_campaign=inlinetweetsharer
 
@@ -166,6 +166,8 @@ function inline_tweet_sharer_menus() {
 
 /* THIS FUNCTION CREATES THE OPTIONS PAGE WITH ALL OPTIONS */
 function inline_tweet_sharer_options() {
+
+    $current_user = wp_get_current_user();
     ?>
     <div class="pea_admin_wrap">
         <div class="pea_admin_top">
@@ -183,7 +185,7 @@ function inline_tweet_sharer_options() {
                             <div class="mc-field-group">
                                 <label for="mce-EMAIL"> <?php _e( 'Email Address', 'inline-tweet-sharer' ); ?>
                                 </label>
-                                <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL"><button type="submit" name="subscribe" id="mc-embedded-subscribe" class="pea_admin_green">Sign Up!</button>
+                                <input type="email" value="<?php echo $current_user->user_email; ?>" name="EMAIL" class="required email" id="mce-EMAIL"><button type="submit" name="subscribe" id="mc-embedded-subscribe" class="pea_admin_green">Sign Up!</button>
                             </div>
                             <div id="mce-responses" class="clear">
                                 <div class="response" id="mce-error-response" style="display:none"></div>
