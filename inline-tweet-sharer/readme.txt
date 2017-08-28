@@ -1,9 +1,9 @@
 === Plugin Name ===
-Plugin Name:  Inline Tweet Sharer
+Plugin Name: Inline Tweet Sharer
 Plugin URI: https://winwar.co.uk/plugins/inline-tweet-sharer/  
 Donate link: https://winwar.co.uk/plugins/inline-tweet-sharer/#donate 
 Description: Create twitter links on your site that tweet memorable quotes in your text to help increase social media views, similar to the New York Times.
-Version:      1.6.1
+Version:      2.0
 Author:       Rhys Wynne
 Author URI:   https://winwar.co.uk/
 License: GPLv2 or later
@@ -13,7 +13,7 @@ Contributors: rhyswynne
 Link: 
 Tags: twitter, social media, social media marketing, social media promotion, tweet, new york times
 Requires at least: 3.8
-Tested up to: 4.7
+Tested up to: 4.8
 Stable tag: trunk
 
 == Description ==
@@ -26,7 +26,12 @@ You can see an example on the [Inline Tweet Sharer Plugin page](http://winwar.co
 
 For more information, please visit the [Inline Tweet Sharer Documentation page](http://winwar.co.uk/documentation/inline-tweet-sharer/?utm_source=description&utm_medium=wordpressorgreadme&utm_campaign=inlinetweetsharer).
 
-**We are running a survey right now to help us determine where to go with this project. We'd love your feedback. If you have time, [please fill in the survey here](https://docs.google.com/forms/d/1Hg5AIthPIoLAhmi161P6hweCeuBATY_5KrhsqJqG0QI/viewform).**
+== Inline Tweet Sharer Premium ==
+
+[https://www.winwar.co.uk/plugins/inline-tweet-sharer-premium/?utm_source=inline-tweet-sharer-premium&utm_medium=wordpressorgreadme&utm_campaign=inlinetweetsharer]Inline Tweet Sharer Premium is a plugin that will allow you to control and monitor your twitter messages from your blog. Features include:-
+
+* Integration with Google Analytics - generate campaigns for your tweets and find out which ones are the most popular, or not.
+* Add a data-related Twitter Account - After people share your tweets, you can encourage followers to follow you!
 
 = Translation Credits =
 The plugin has been translated to the following languages.
@@ -58,8 +63,14 @@ This project is now on github, [you can view the repository here](https://github
 1. Example of how the twitter feed appears in your site.
 
 == Changelog ==
+= 2.0 =
+* Combined the dialog boxes into one dialog box.
+* Restructured Plugin so it's a lot neater.
+* Prepared for Inline Tweet Sharer Premium.
+
 = 1.6.1 =
 * Auto populate user email addresses to get bug fixes.
+* Tweets were cutting off too soon. This has been improved.
 
 = 1.6 =
 * Introduced a sponsored feature - the ability to remove spaces before/after the prefix/suffix.
@@ -167,8 +178,8 @@ To install, please do the following:-
 The CSS classes for the plugin are the following:-
 
 * **a.inline-twitter-link** - style for the entire link.
-* **a.inline-twitter-link span** – style for the twitter logo at the end of the link.
-* **a:hover.inline-twitter-link** – style for the entire link with when hovered over it.
+* **a.inline-twitter-link span** - style for the twitter logo at the end of the link.
+* **a:hover.inline-twitter-link** - style for the entire link with when hovered over it.
 * **a:hover.inline-twitter-link span** - style for the twitter logo at the end of the link when hovered.
 
 == Found a Bug? ==

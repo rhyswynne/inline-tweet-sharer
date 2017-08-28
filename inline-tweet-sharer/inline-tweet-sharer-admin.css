@@ -119,7 +119,7 @@ span.mce_inlinetweetsharer:before, i.mce-i-inlinetweetsharer:before, i.mce-i-inl
     color: #00ACED;
 }
 
-.mce-i-inlinetweetsharer:before {
+.mce-i-mce_inlinetweetsharer_button:before {
     font-family: "dashicons";
     content: "\f301";
     color: #00ACED;
@@ -129,3 +129,31 @@ span.mce_inlinetweetsharer:before, i.mce-i-inlinetweetsharer:before, i.mce-i-inl
 }
 
 
+i.mce-i-mce_inlinetweetsharer_button {
+    font: 400 20px/1 dashicons;
+    padding: 0;
+    vertical-align: top;
+    speak: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin-left: -2px;
+    padding-right: 2px
+}
+
+.inline_tweet_sharer_admin_box {
+    /* color: #fff; */
+    border-color: #73ba71;
+    background: #f2fff2;
+}
+
+.inline_tweet_sharer_admin_box h2 {
+    /* color: #fff; */
+}
+
+.inline_tweet_sharer_admin_box .pea_admin_green {
+    font-size: 18px;
+}
+
+.text-center {
+    text-align: center;
+}

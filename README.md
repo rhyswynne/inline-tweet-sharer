@@ -14,7 +14,7 @@ Contributors: rhyswynne
 Link: 
 Tags: twitter, social media, social media marketing, social media promotion, tweet, new york times
 Requires at least: 3.8
-Tested up to: 4.1
+Tested up to: 4.8
 Stable tag: 1.5
 
 Description

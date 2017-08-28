@@ -1,40 +1,43 @@
-function inlinetweetsharer(content) {
-    var prefix = prompt("Prefix for Quote", "");
-	var tweeter = prompt("User for retweet", "");
-    var suffix = prompt("Suffix for Quote", "");
-	inpost = '[inlinetweet prefix="' + prefix + '" tweeter="' + tweeter + '" suffix="' + suffix + '"]' + content + '[/inlinetweet]';
-    return inpost;
-}
+// Search for Highlight Box in new expedia theme
 
 (function() {
+	tinymce.PluginManager.add('mce_inlinetweetsharer_button', function( editor, url ) {
+		editor.addButton( 'mce_inlinetweetsharer_button', {
+			title: 'Add Inline Tweet',
+			//icon: 'icon dashicons-lightbulb',
+			onclick: function() {
+				editor.windowManager.open( {
+					title: 'Add Inline Tweet',
+					icon: 'icon dashicons-twitter',
+					body: [
+					{
+						type: 'textbox',
+						name: 'prefix',
+						label: 'Prefix for Quote'
+					},
+					{
+						type: 'textbox',
+						name: 'user',
+						label: 'User for retweet'
+					},
+					{
+						type: 'textbox',
+						name: 'suffix',
+						label: 'Suffix for Quote'
+					}],
+					onsubmit: function( e ) {
 
-    tinymce.create('tinymce.plugins.inlinetweetsharer', {
+						var openstring 	= "";
+						var content 	= editor.selection.getContent();
 
-        init : function(ed, url){
-            ed.addButton('inlinetweetsharer', {
-                title : 'Insert tweetable link',
-                onclick : function() {
-                    ed.execCommand(
-                        'mceInsertContent',
-                        false,
-                        inlinetweetsharer(ed.selection.getContent())
-                        );
-                },
-                //image: url + "/twitter.png"
-            });
-        },
+						if ( '' != e.data.title ) {
+							openstring = '[inlinetweet prefix="' + e.data.prefix + '" tweeter="' + e.data.user + '" suffix="' + e.data.suffix + '"]';
+						}
 
-        getInfo : function() {
-            return {
-                longname : 'Contnet Mage plugin',
-                author : 'Grzegorz Winiarski',
-                authorurl : 'http://ditio.net',
-                infourl : '',
-                version : "1.0"
-            };
-        }
-    });
-
-    tinymce.PluginManager.add('inlinetweetsharer', tinymce.plugins.inlinetweetsharer);
-    
+						editor.insertContent( openstring + content + "[/inlinetweet]");
+					}
+				});
+			}
+		});
+	});
 })();
