@@ -23,7 +23,7 @@ function inline_tweet_sharer_shortcode( $atts, $content = null ) {
 } 
 
 
-function inline_tweet_sharer_create_tweet( $prefix = "", $tweeter = "", $suffix = "", $removespaces, $content, $linktotweet = "", $extrafields ) {
+function inline_tweet_sharer_create_tweet( $prefix = "", $tweeter = "", $suffix = "", $removespaces, $content, $linktotweet = "", $extrafields = "" ) {
 
     $tweetlinkstring = "";
 

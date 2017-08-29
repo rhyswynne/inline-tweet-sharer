@@ -3,7 +3,7 @@ Plugin Name: Inline Tweet Sharer
 Plugin URI: https://winwar.co.uk/plugins/inline-tweet-sharer/  
 Donate link: https://winwar.co.uk/plugins/inline-tweet-sharer/#donate 
 Description: Create twitter links on your site that tweet memorable quotes in your text to help increase social media views, similar to the New York Times.
-Version:      2.0
+Version:      2.0.1
 Author:       Rhys Wynne
 Author URI:   https://winwar.co.uk/
 License: GPLv2 or later
@@ -63,6 +63,9 @@ This project is now on github, [you can view the repository here](https://github
 1. Example of how the twitter feed appears in your site.
 
 == Changelog ==
+= 2.0.1 =
+* Bug fix in extrafields, too few fields being passed.
+
 = 2.0 =
 * Combined the dialog boxes into one dialog box.
 * Restructured Plugin so it's a lot neater.
