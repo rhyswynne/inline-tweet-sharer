@@ -3,21 +3,22 @@
 Plugin Name:  Inline Tweet Sharer
 Plugin URI:   https://winwar.co.uk/plugins/inline-tweet-sharer/?utm_source=plugin-link&utm_medium=plugin&utm_campaign=inlinetweetsharer
 Description:  Create twitter links on your site that tweet the anchor text - for memorable quotes to help increase social media views, similar to the New York Times.
-Version:      2.0.1
+Version:      2.1
 Author:       Winwar Media
-Author URI:   https://winwar.co.uk/?utm_source=author-link&utm_medium=plugin&utm_campaign=inlinetweetsharer
+Author URI:   https://www.winwar.co.uk/?utm_source=author-link&utm_medium=plugin&utm_campaign=inlinetweetsharer
 
 */
 
-define( 'ITS_PLUGIN_VERSION', '2.0' );
+define( 'ITS_PLUGIN_VERSION', '2.1' );
 define( 'ITS_PATH', dirname( __FILE__ ) );
 define( 'ITS_URL', plugins_url('', __FILE__) );
 define( "ITS_PLUGIN_NAME", "Inline Tweet Sharer" );
 define( 'ITS_PLUGIN_TAGLINE', __( 'Create twitter links on your site that tweet the anchor text - for memorable quotes to help increase social media views, similar to the New York Times.', 'inline-tweet-sharer' ) );
-define( "ITS_PLUGIN_URL", "http://winwar.co.uk/plugins/inline-tweet-sharer/" );
-define( "ITS_EXTEND_URL", "http://wordpress.org/plugins/inline-tweet-sharer/" );
+define( "ITS_PLUGIN_URL", "https://www.winwar.co.uk/plugins/inline-tweet-sharer/" );
+define( "ITS_EXTEND_URL", "https://wordpress.org/plugins/inline-tweet-sharer/" );
 define( "ITS_AUTHOR_TWITTER", "rhyswynne" );
 define( "ITS_DONATE_LINK", "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SBVM5663CHYN4" );
+define( "ITS_TWEET_LENGTH", 280 );
 
 function inline_tweet_sharer_textdomain() {
 	$plugin_dir = basename( dirname( __FILE__ ) );

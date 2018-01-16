@@ -1,19 +1,18 @@
-=== Plugin Name ===
+=== Inline Tweet Sharer - Twitter Sharing Plugin  ===
 Plugin Name: Inline Tweet Sharer
-Plugin URI: https://winwar.co.uk/plugins/inline-tweet-sharer/  
-Donate link: https://winwar.co.uk/plugins/inline-tweet-sharer/#donate 
+Plugin URI: https://www.winwar.co.uk/plugins/inline-tweet-sharer/  
+Donate link: https://www.winwar.co.uk/plugins/inline-tweet-sharer/#donate 
 Description: Create twitter links on your site that tweet memorable quotes in your text to help increase social media views, similar to the New York Times.
-Version:      2.0.1
+Version:      2.1
 Author:       Rhys Wynne
 Author URI:   https://winwar.co.uk/
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-
 Contributors: rhyswynne
 Link: 
 Tags: twitter, social media, social media marketing, social media promotion, tweet, new york times
 Requires at least: 3.8
-Tested up to: 4.8
+Tested up to: 4.9
 Stable tag: trunk
 
 == Description ==
@@ -22,13 +21,13 @@ Inline Tweet Sharer is a plugin that allows you to easily and simply create link
 
 Links can either be highlighted as Twitter links or look the same as regular links, and there is a Rich Text Editor button you can use to click and easily add the links.
 
-You can see an example on the [Inline Tweet Sharer Plugin page](http://winwar.co.uk/plugins/inline-tweet-sharer/?utm_source=description&utm_medium=wordpressorgreadme&utm_campaign=inlinetweetsharer).
+You can see an example on the [Inline Tweet Sharer Plugin page](https://www.winwar.co.uk/plugins/inline-tweet-sharer/?utm_source=description&utm_medium=wordpressorgreadme&utm_campaign=inlinetweetsharer).
 
-For more information, please visit the [Inline Tweet Sharer Documentation page](http://winwar.co.uk/documentation/inline-tweet-sharer/?utm_source=description&utm_medium=wordpressorgreadme&utm_campaign=inlinetweetsharer).
+For more information, please visit the [Inline Tweet Sharer Documentation page](https://www.winwar.co.uk/documentation/inline-tweet-sharer/?utm_source=description&utm_medium=wordpressorgreadme&utm_campaign=inlinetweetsharer).
 
 == Inline Tweet Sharer Premium ==
 
-[https://www.winwar.co.uk/plugins/inline-tweet-sharer-premium/?utm_source=inline-tweet-sharer-premium&utm_medium=wordpressorgreadme&utm_campaign=inlinetweetsharer]Inline Tweet Sharer Premium is a plugin that will allow you to control and monitor your twitter messages from your blog. Features include:-
+[Inline Tweet Sharer Premium](https://www.winwar.co.uk/plugins/inline-tweet-sharer-premium/?utm_source=inline-tweet-sharer-premium&utm_medium=wordpressorgreadme&utm_campaign=inlinetweetsharer) is a plugin that will allow you to control and monitor your twitter messages from your blog. Features include:-
 
 * Integration with Google Analytics - generate campaigns for your tweets and find out which ones are the most popular, or not.
 * Add a data-related Twitter Account - After people share your tweets, you can encourage followers to follow you!
@@ -63,6 +62,12 @@ This project is now on github, [you can view the repository here](https://github
 1. Example of how the twitter feed appears in your site.
 
 == Changelog ==
+= 2.1 = 
+* Increase Tweet Length to the new 280 length
+
+= 2.0.2 =
+* Bug fix in option fields, signup form.
+
 = 2.0.1 =
 * Bug fix in extrafields, too few fields being passed.
 

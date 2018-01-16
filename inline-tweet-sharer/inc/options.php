@@ -21,13 +21,13 @@ function inline_tweet_sharer_options() {
             <div class="pea_admin_main_left">
                 <div class="pea_admin_signup">
                     <?php _e( 'Want to know about updates to this plugin without having to log into your site every time? Want to know about other cool plugins we\'ve made? Add your email and we\'ll add you to our very rare mail outs.', 'inline-tweet-sharer' ); ?>
-
                     <!-- Begin MailChimp Signup Form -->
                     <div id="mc_embed_signup">
                         <form action="http://gospelrhys.us1.list-manage.com/subscribe/post?u=c656fe50ec16f06f152034ea9&amp;id=d9645e38c2" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
                             <div class="mc-field-group">
                                 <label for="mce-EMAIL"> <?php _e( 'Email Address', 'inline-tweet-sharer' ); ?>
                                 </label>
+                                <input type="hidden" value="Inline Tweet Sharer" name="SIGNUP" class="" id="mce-SIGNUP">
                                 <input type="email" value="<?php echo $current_user->user_email; ?>" name="EMAIL" class="required email" id="mce-EMAIL"><button type="submit" name="subscribe" id="mc-embedded-subscribe" class="pea_admin_green">Sign Up!</button>
                             </div>
                             <div id="mce-responses" class="clear">

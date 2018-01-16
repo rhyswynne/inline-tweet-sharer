@@ -72,8 +72,8 @@ function inline_tweet_sharer_create_tweet( $prefix = "", $tweeter = "", $suffix 
         $tweetlinkstring .= $prefix . $spacestring;
     }
 
-    if ( ( strlen( utf8_decode( $tweetlinkstring ) ) + 24 ) > 140 ) { 
-        $tweetlinkstring = substr( $tweetlinkstring, 0, ( 140-( strlen( utf8_decode( $tweetlinkstring ) ) + 25 ) ) ); 
+    if ( ( strlen( utf8_decode( $tweetlinkstring ) ) + 24 ) > ITS_TWEET_LENGTH ) { 
+        $tweetlinkstring = substr( $tweetlinkstring, 0, ( ITS_TWEET_LENGTH-( strlen( utf8_decode( $tweetlinkstring ) ) + 25 ) ) ); 
         $tweetlinkstring = preg_replace( '/ [^ ]*$/', '...', $tweetlinkstring ); 
     }
 
