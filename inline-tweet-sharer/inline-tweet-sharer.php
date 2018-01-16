@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name:  Inline Tweet Sharer
-Plugin URI:   https://winwar.co.uk/plugins/inline-tweet-sharer/?utm_source=plugin-link&utm_medium=plugin&utm_campaign=inlinetweetsharer
+Plugin URI:   https://www.winwar.co.uk/plugins/inline-tweet-sharer/?utm_source=plugin-link&utm_medium=plugin&utm_campaign=inlinetweetsharer
 Description:  Create twitter links on your site that tweet the anchor text - for memorable quotes to help increase social media views, similar to the New York Times.
 Version:      2.1
 Author:       Winwar Media

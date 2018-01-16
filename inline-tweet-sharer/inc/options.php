@@ -28,7 +28,11 @@ function inline_tweet_sharer_options() {
                                 <label for="mce-EMAIL"> <?php _e( 'Email Address', 'inline-tweet-sharer' ); ?>
                                 </label>
                                 <input type="hidden" value="Inline Tweet Sharer" name="SIGNUP" class="" id="mce-SIGNUP">
-                                <input type="email" value="<?php echo $current_user->user_email; ?>" name="EMAIL" class="required email" id="mce-EMAIL"><button type="submit" name="subscribe" id="mc-embedded-subscribe" class="pea_admin_green">Sign Up!</button>
+                                <input type="email" value="<?php echo $current_user->user_email; ?>" name="EMAIL" class="required email" id="mce-EMAIL" tabindex="10">
+                                <button type="submit" name="subscribe" id="mc-embedded-subscribe" class="pea_admin_green"  tabindex="20">Sign Up!</button><br/>
+                                <label for="mce-MMERGE4">I want to Receive The Winwar Media Newsletter: </label>
+                                <input type="checkbox" value="yes" name="MMERGE4" class="" id="mce-MMERGE4" tabindex="15">
+
                             </div>
                             <div id="mce-responses" class="clear">
                                 <div class="response" id="mce-error-response" style="display:none"></div>
@@ -201,21 +205,21 @@ function inline_tweet_sharer_options() {
                     js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=181590835206577";
                     fjs.parentNode.insertBefore(js, fjs);
                 }(document, 'script', 'facebook-jssdk'));
-                </script>
+            </script>
 
-                <div class="fb-like" data-href="<?php echo ITS_PLUGIN_URL; ?>" data-send="true" data-layout="button_count" data-width="250" data-show-faces="true"></div>
-                <br>
-                <a href="https://twitter.com/share" class="twitter-share-button" data-url="<?php echo ITS_PLUGIN_URL; ?>" data-text="Just been using <?php echo ITS_PLUGIN_NAME; ?> #WordPress plugin" data-via="<?php echo ITS_AUTHOR_TWITTER; ?>" data-related="WPBrewers">Tweet</a>
+            <div class="fb-like" data-href="<?php echo ITS_PLUGIN_URL; ?>" data-send="true" data-layout="button_count" data-width="250" data-show-faces="true"></div>
+            <br>
+            <a href="https://twitter.com/share" class="twitter-share-button" data-url="<?php echo ITS_PLUGIN_URL; ?>" data-text="Just been using <?php echo ITS_PLUGIN_NAME; ?> #WordPress plugin" data-via="<?php echo ITS_AUTHOR_TWITTER; ?>" data-related="WPBrewers">Tweet</a>
 
-                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 
-                <br>
-                <a href="http://bufferapp.com/add" class="buffer-add-button" data-text="Just been using <?php echo ITS_PLUGIN_NAME; ?> #WordPress plugin" data-url="<?php echo ITS_PLUGIN_URL; ?>" data-count="horizontal" data-via="<?php echo ITS_AUTHOR_TWITTER; ?>">Buffer</a><script type="text/javascript" src="http://static.bufferapp.com/js/button.js"></script>
+            <br>
+            <a href="http://bufferapp.com/add" class="buffer-add-button" data-text="Just been using <?php echo ITS_PLUGIN_NAME; ?> #WordPress plugin" data-url="<?php echo ITS_PLUGIN_URL; ?>" data-count="horizontal" data-via="<?php echo ITS_AUTHOR_TWITTER; ?>">Buffer</a><script type="text/javascript" src="http://static.bufferapp.com/js/button.js"></script>
 
-                <br>
-                <div class="g-plusone" data-size="medium" data-href="<?php echo ITS_PLUGIN_URL; ?>"></div>
+            <br>
+            <div class="g-plusone" data-size="medium" data-href="<?php echo ITS_PLUGIN_URL; ?>"></div>
 
-                <script type="text/javascript">
+            <script type="text/javascript">
                 window.___gcfg = {lang: 'en-GB'};
 
                 (function() {
@@ -223,42 +227,42 @@ function inline_tweet_sharer_options() {
                     po.src = 'https://apis.google.com/js/plusone.js';
                     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
                 })();
-                </script>
+            </script>
 
-                <br>
+            <br>
 
-                <su:badge layout="3" location="<?php echo ITS_PLUGIN_URL?>"></su:badge>
+            <su:badge layout="3" location="<?php echo ITS_PLUGIN_URL?>"></su:badge>
 
-                <script type="text/javascript">
+            <script type="text/javascript">
                 (function() {
                     var li = document.createElement('script'); li.type = 'text/javascript'; li.async = true;
                     li.src = ('https:' == document.location.protocol ? 'https:' : 'http:') + '//platform.stumbleupon.com/1/widgets.js';
                     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(li, s);
                 })();
-                </script>
-            </div>
+            </script>
+        </div>
 
-            <div class="pea_admin_box">
-                <h2><?php _e( 'About the Author', 'inline-tweet-sharer' ); ?></h2>
+        <div class="pea_admin_box">
+            <h2><?php _e( 'About the Author', 'inline-tweet-sharer' ); ?></h2>
 
-                <?php
-                $default = "http://reviews.evanscycles.com/static/0924-en_gb/noAvatar.gif";
-                $size = 70;
-                $rhys_url = "http://www.gravatar.com/avatar/" . md5( strtolower( trim( "rhys@rhyswynne.co.uk" ) ) ) . "?d=" . urlencode( $default ) . "&s=" . $size;
-                ?>
+            <?php
+            $default = "http://reviews.evanscycles.com/static/0924-en_gb/noAvatar.gif";
+            $size = 70;
+            $rhys_url = "http://www.gravatar.com/avatar/" . md5( strtolower( trim( "rhys@rhyswynne.co.uk" ) ) ) . "?d=" . urlencode( $default ) . "&s=" . $size;
+            ?>
 
-                <p class="pea_admin_clear"><img class="pea_admin_fl" src="<?php echo $rhys_url; ?>" alt="Rhys Wynne" /> <h3>Rhys Wynne</h3><br><a href="https://twitter.com/rhyswynne" class="twitter-follow-button" data-show-count="false">Follow @rhyswynne</a>
-                    <div class="fb-subscribe" data-href="https://www.facebook.com/rhysywynne" data-layout="button_count" data-show-faces="false" data-width="220"></div>
-                </p>
+            <p class="pea_admin_clear"><img class="pea_admin_fl" src="<?php echo $rhys_url; ?>" alt="Rhys Wynne" /> <h3>Rhys Wynne</h3><br><a href="https://twitter.com/rhyswynne" class="twitter-follow-button" data-show-count="false">Follow @rhyswynne</a>
+                <div class="fb-subscribe" data-href="https://www.facebook.com/rhysywynne" data-layout="button_count" data-show-faces="false" data-width="220"></div>
+            </p>
 
-                <p class="pea_admin_clear"><?php _e( 'Rhys Wynne is a Digital Marketing Consultant currently at FireCask and a freelance WordPress developer and blogger. His plugins have had a total of 100,000 downloads, and his premium plugins have generated four figure sums in terms of sales. Rhys likes rubbish football (supporting Colwyn Bay FC) and Professional Wrestling.', 'inline-tweet-sharer' ); ?></p>
-
-            </div>
+            <p class="pea_admin_clear"><?php _e( 'Rhys Wynne is a Digital Marketing Consultant currently at FireCask and a freelance WordPress developer and blogger. His plugins have had a total of 100,000 downloads, and his premium plugins have generated four figure sums in terms of sales. Rhys likes rubbish football (supporting Colwyn Bay FC) and Professional Wrestling.', 'inline-tweet-sharer' ); ?></p>
 
         </div>
-    </div>
 
-    <?php
+    </div>
+</div>
+
+<?php
 
 }
 
