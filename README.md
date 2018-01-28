@@ -45,6 +45,29 @@ To contribute a translation, please [contact me](http://winwar.co.uk/contact-us/
 
 Changelog
 =========
+2.1.1
+-----
+* Fixes bug by linking to the paginated post, rather than the front page.
+
+2.1
+---
+* Increase Tweet Length to the new 280 length
+* Segmented Newsletter to seperate those who just want plugin updates, and those who want more of the newsletter.
+
+2.0.2
+-----
+* Bug fix in option fields, signup form.
+
+2.0.1
+-----
+* Bug fix in extrafields, too few fields being passed.
+
+2.0
+---
+* Combined the dialog boxes into one dialog box.
+* Restructured Plugin so it's a lot neater.
+* Prepared for Inline Tweet Sharer Premium.
+
 1.6.1
 -----
 * Auto populate user email addresses to get bug fixes.
