@@ -34,7 +34,7 @@ function inline_tweet_sharer_create_tweet( $prefix = "", $tweeter = "", $suffix 
     }
 
     if ( !$linktotweet ) {
-        $linktotweet = get_permalink();
+        $linktotweet = get_pagenum_link();
     }
 
     if ( "1" == get_option( 'inline-tweet-sharer-bitly' ) ) {
