@@ -62,6 +62,9 @@ This project is now on github, [you can view the repository here](https://github
 1. Example of how the twitter feed appears in your site.
 
 == Changelog ==
+= 2.1.2 =
+* Change the hooks order, loading inlinetweetsharer_add_highlightbox_button on admin_init, allowing Gutenberg compatibility.
+
 = 2.1.1 =
 * Fixes bug by linking to the paginated post, rather than the front page.
 

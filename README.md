@@ -45,6 +45,10 @@ To contribute a translation, please [contact me](http://winwar.co.uk/contact-us/
 
 Changelog
 =========
+2.1.2
+-----
+* Change the hooks order, loading inlinetweetsharer_add_highlightbox_button on admin_init, allowing Gutenberg compatibility.
+
 2.1.1
 -----
 * Fixes bug by linking to the paginated post, rather than the front page.
