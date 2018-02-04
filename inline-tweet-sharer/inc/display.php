@@ -72,12 +72,20 @@ function inline_tweet_sharer_create_tweet( $prefix = "", $tweeter = "", $suffix 
         $tweetlinkstring .= $prefix . $spacestring;
     }
 
+
+    /**
+     * Filter inline_tweet_sharer_change_tweet_string
+     *
+     * Changes the tweet string to whatever you wish.
+     * 
+     * @var string
+     */
+    $tweetlinkstring = apply_filters( 'inline_tweet_sharer_change_tweet_string', $tweetlinkstring );
+
     if ( ( strlen( utf8_decode( $tweetlinkstring ) ) + 24 ) > ITS_TWEET_LENGTH ) { 
         $tweetlinkstring = substr( $tweetlinkstring, 0, ( ITS_TWEET_LENGTH-( strlen( utf8_decode( $tweetlinkstring ) ) + 25 ) ) ); 
         $tweetlinkstring = preg_replace( '/ [^ ]*$/', '...', $tweetlinkstring ); 
     }
-
-
 
     if ( "1" == get_option( 'inline-tweet-sharer-capitalise' ) ) {
         $tweetlinkstring = ucfirst( $tweetlinkstring );

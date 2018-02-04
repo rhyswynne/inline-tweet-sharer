@@ -3,14 +3,14 @@ Plugin Name: Inline Tweet Sharer
 Plugin URI: https://www.winwar.co.uk/plugins/inline-tweet-sharer/  
 Donate link: https://www.winwar.co.uk/plugins/inline-tweet-sharer/#donate 
 Description: Create twitter links on your site that tweet memorable quotes in your text to help increase social media views, similar to the New York Times.
-Version:      2.1.1
+Version:      2.2
 Author:       Rhys Wynne
 Author URI:   https://www.winwar.co.uk/
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Contributors: rhyswynne
 Link: 
-Tags: twitter, social media, social media marketing, social media promotion, tweet, new york times
+Tags: twitter, social media, social media marketing, social media promotion, tweet, new york times, gutenberg ready
 Requires at least: 3.8
 Tested up to: 4.9
 Stable tag: trunk
@@ -32,20 +32,16 @@ For more information, please visit the [Inline Tweet Sharer Documentation page](
 * Integration with Google Analytics - generate campaigns for your tweets and find out which ones are the most popular, or not.
 * Add a data-related Twitter Account - After people share your tweets, you can encourage followers to follow you!
 
-= Translation Credits =
-The plugin has been translated to the following languages.
-
-* Italian - [Davide De Maestri](http://www.gleenk.com/)
-
-To contribute a translation, please [contact me](http://winwar.co.uk/contact-us/)!
+= Gutenberg Notes =
+This plugin is compatible with Gutenberg. For ease of use, please create your tweet strings in the "Classic" Content Block.
 
 = About Winwar Media =
-This plugin is made by [**Winwar Media**](http://winwar.co.uk/?utm_source=aboutwinwarmedia&utm_medium=wordpressorgreadme&utm_campaign=inlinetweetsharer), a WordPress Development and Training Agency in Manchester, UK.
+This plugin is made by [**Winwar Media**](https://www.winwar.co.uk/?utm_source=aboutwinwarmedia&utm_medium=wordpressorgreadme&utm_campaign=inlinetweetsharer), a WordPress Development and Training Agency in Manchester, UK.
 
 Why don't you?
 
-* Check out our book, [bbPress Complete](http://winwar.co.uk/books/bbpress-complete/?utm_source=aboutwinwarmedia&utm_medium=wordpressorgreadme&utm_campaign=inlinetweetsharer)
-* Check out our other [WordPress Plugins](http://winwar.co.uk/plugins/?utm_source=aboutwinwarmedia&utm_medium=wordpressorgreadme&utm_campaign=inlinetweetsharer), including [WP Email Capture](http://wpemailcapture.com)
+* Check out our book, [bbPress Complete](https://www.winwar.co.uk/books/bbpress-complete/?utm_source=aboutwinwarmedia&utm_medium=wordpressorgreadme&utm_campaign=inlinetweetsharer)
+* Check out our other [WordPress Plugins](https://www.winwar.co.uk/plugins/?utm_source=aboutwinwarmedia&utm_medium=wordpressorgreadme&utm_campaign=inlinetweetsharer), including [WP Email Capture](http://wpemailcapture.com)
 * Follow us on Social Media, such as [Facebook](https://www.facebook.com/winwaruk), [Twitter](https://twitter.com/winwaruk) or [Google+](https://plus.google.com/+WinwarCoUk)
 * [Send us an email](http://winwar.co.uk/contact-us/?utm_source=aboutwinwarmedia&utm_medium=wordpressorgreadme&utm_campaign=inlinetweetsharer)! We like hearing from plugin users.
 
@@ -53,15 +49,26 @@ Why don't you?
 We offer support in two places:-
 
 * Support on the [WordPress.org Support Board](http://wordpress.org/support/plugin/inline-tweet-sharer)
-* A [priority support forum](http://winwar.co.uk/priority-support/?utm_source=support&utm_medium=wordpressorgreadme&utm_campaign=inlinetweetsharer), which offers same-day responses.
+* A [priority support forum](https://www.winwar.co.uk/priority-support/?utm_source=support&utm_medium=wordpressorgreadme&utm_campaign=inlinetweetsharer), which offers same-day responses.
 
 = On Github =
 This project is now on github, [you can view the repository here](https://github.com/rhyswynne/inline-tweet-sharer/). There are other versions, but this is the one I've put up, so where all the developmental will be tracked.
+
+= Translation Credits =
+The plugin has been translated to the following languages.
+
+* Italian - [Davide De Maestri](http://www.gleenk.com/)
+
+To contribute a translation, please [contact me](http://winwar.co.uk/contact-us/)!
 
 == Screenshots ==
 1. Example of how the twitter feed appears in your site.
 
 == Changelog ==
+= 2.2 =
+* Added inline_tweet_sharer_change_tweet_string filter, allowing you to change the filter however you wish
+* Change wording to "Tweet" from "Quote" in the editor section
+
 = 2.1.2 =
 * Change the hooks order, loading inlinetweetsharer_add_highlightbox_button on admin_init, allowing Gutenberg compatibility.
 

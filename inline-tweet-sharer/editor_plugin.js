@@ -13,7 +13,7 @@
 					{
 						type: 'textbox',
 						name: 'prefix',
-						label: 'Prefix for Quote'
+						label: 'Prefix for Tweet'
 					},
 					{
 						type: 'textbox',
@@ -23,7 +23,7 @@
 					{
 						type: 'textbox',
 						name: 'suffix',
-						label: 'Suffix for Quote'
+						label: 'Suffix for Tweet'
 					}],
 					onsubmit: function( e ) {
 
