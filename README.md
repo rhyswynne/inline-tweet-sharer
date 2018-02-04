@@ -45,6 +45,11 @@ To contribute a translation, please [contact me](http://winwar.co.uk/contact-us/
 
 Changelog
 =========
+2.2
+---
+* Added inline_tweet_sharer_change_tweet_string filter, allowing you to change the filter however you wish
+* Change wording to "Tweet" from "Quote" in the editor section
+
 2.1.2
 -----
 * Change the hooks order, loading inlinetweetsharer_add_highlightbox_button on admin_init, allowing Gutenberg compatibility.
