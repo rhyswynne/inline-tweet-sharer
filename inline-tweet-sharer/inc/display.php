@@ -82,8 +82,12 @@ function inline_tweet_sharer_create_tweet( $prefix = "", $tweeter = "", $suffix 
      */
     $tweetlinkstring = apply_filters( 'inline_tweet_sharer_change_tweet_string', $tweetlinkstring );
 
-    if ( ( strlen( utf8_decode( $tweetlinkstring ) ) + 24 ) > ITS_TWEET_LENGTH ) { 
-        $tweetlinkstring = substr( $tweetlinkstring, 0, ( ITS_TWEET_LENGTH-( strlen( utf8_decode( $tweetlinkstring ) ) + 25 ) ) ); 
+    if ( function_exists( 'utf8_decode' ) ) {
+        $tweetlinkstring = utf8_decode( $tweetlinkstring );
+    }
+
+    if ( ( strlen( $tweetlinkstring ) + 24 ) > ITS_TWEET_LENGTH ) { 
+        $tweetlinkstring = substr( $tweetlinkstring, 0, ( ITS_TWEET_LENGTH-( strlen( $tweetlinkstring ) + 25 ) ) ); 
         $tweetlinkstring = preg_replace( '/ [^ ]*$/', '...', $tweetlinkstring ); 
     }
 

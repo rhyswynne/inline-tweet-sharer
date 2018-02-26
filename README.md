@@ -49,6 +49,7 @@ Changelog
 ---
 * Added inline_tweet_sharer_change_tweet_string filter, allowing you to change the filter however you wish
 * Change wording to "Tweet" from "Quote" in the editor section
+* Make PHP 7.0 Compatible due to `utf8_decode` function being optional
 
 2.1.2
 -----
