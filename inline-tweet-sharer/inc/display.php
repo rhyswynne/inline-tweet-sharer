@@ -82,9 +82,15 @@ function inline_tweet_sharer_create_tweet( $prefix = "", $tweeter = "", $suffix 
      */
     $tweetlinkstring = apply_filters( 'inline_tweet_sharer_change_tweet_string', $tweetlinkstring );
 
-    if ( function_exists( 'utf8_decode' ) ) {
-        $tweetlinkstring = utf8_decode( $tweetlinkstring );
+    $bypassutfdecode = get_option( 'inline-tweet-sharer-bypassutfdecode' );
+
+    if ( !$bypassutfdecode ) {
+        if ( function_exists( 'utf8_decode' ) ) {
+            $tweetlinkstring = utf8_decode( $tweetlinkstring );
+        }
     }
+
+    
 
     if ( ( strlen( $tweetlinkstring ) + 24 ) > ITS_TWEET_LENGTH ) { 
         $tweetlinkstring = substr( $tweetlinkstring, 0, ( ITS_TWEET_LENGTH-( strlen( $tweetlinkstring ) + 25 ) ) ); 
@@ -94,8 +100,8 @@ function inline_tweet_sharer_create_tweet( $prefix = "", $tweeter = "", $suffix 
     if ( "1" == get_option( 'inline-tweet-sharer-capitalise' ) ) {
         $tweetlinkstring = ucfirst( $tweetlinkstring );
     }
-
-    $tweetlinkstring = urlencode( html_entity_decode( $tweetlinkstring, ENT_COMPAT, 'UTF-8' ) );
+    
+    $tweetlinkstring = urlencode( html_entity_decode( $tweetlinkstring, ENT_COMPAT, get_bloginfo('charset') ) );
 
     $extraclass=get_option( 'inline-tweet-sharer-extraclass' );
 

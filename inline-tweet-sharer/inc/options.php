@@ -104,6 +104,12 @@ function inline_tweet_sharer_options() {
                                 <td><input type="checkbox" name="inline-tweet-sharer-removespaces" id="inline-tweet-sharer-removespaces" value="1" <?php checked( 1, get_option( 'inline-tweet-sharer-removespaces' ) ); ?>/>
                                 </td>
                             </tr>
+                            <tr valign="top">
+                                <th scope="row" style="width:400px"><label for="inline-tweet-sharer-bypassutfdecode"><?php _e( 'Bypass UTF-8 Decode', 'inline-tweet-sharer' ); ?>:</label></th>
+                                <td><input type="checkbox" name="inline-tweet-sharer-bypassutfdecode" id="inline-tweet-sharer-bypassutfdecode" value="1" <?php checked( 1, get_option( 'inline-tweet-sharer-bypassutfdecode' ) ); ?>/>
+                                <br /><?php _e( 'Tick this box if you use languages such as Arabic, Hebrew, non western characters, or characters with accents or mutations.', 'inline-tweet-sharer' ); ?>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
 
@@ -278,6 +284,7 @@ function inline_tweet_sharer_process() { // whitelist options
     register_setting( 'inline-tweet-sharer-group', 'inline-tweet-sharer-dprefix' );
     register_setting( 'inline-tweet-sharer-group', 'inline-tweet-sharer-dsuffix' );
     register_setting( 'inline-tweet-sharer-group', 'inline-tweet-sharer-removespaces' );
+    register_setting( 'inline-tweet-sharer-group', 'inline-tweet-sharer-bypassutfdecode' );    
     register_setting( 'inline-tweet-sharer-group', 'inline-tweet-sharer-bitly' );
     register_setting( 'inline-tweet-sharer-group', 'inline-tweet-sharer-bitlyapikey' );
     register_setting( 'inline-tweet-sharer-group', 'inline-tweet-sharer-urlshortened' );
