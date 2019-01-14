@@ -65,6 +65,9 @@ To contribute a translation, please [contact me](http://winwar.co.uk/contact-us/
 1. Example of how the twitter feed appears in your site.
 
 == Changelog ==
+= 2.3 =
+* Change in structure of bit.ly integration. Please check to make sure you're still connected.
+
 = 2.2.1 =
 * Introduced the "Bypass UTF-8 Option", so non standard UTF-8 characters can still be used.
 

@@ -13,7 +13,7 @@
 /**
 * The bitlyKey assigned to your bit.ly account. (http://bit.ly/a/account)
 */
-$bitlyapikey = get_option('inline-tweet-sharer-bitlyapikey');
+$bitlyapikey    = get_option('inline-tweet-sharer-bitlyapikey');
 define('bitlyKey', $bitlyapikey);
 
 /**
@@ -81,18 +81,18 @@ function bitly_v3_shorten($longUrl, $domain = '', $x_login = '', $x_apiKey = '')
   $result = array();
   $url = bitly_oauth_api . "shorten?access_token=" . bitlyKey . "&longUrl=" . urlencode($longUrl);
   if ($domain != '') {
-    $url .= "&domain=" . $domain;
+	$url .= "&domain=" . $domain;
   }
   if ($x_login != '' && $x_apiKey != '') {
-    $url .= "&x_login=" . $x_login . "&x_apiKey=" . $x_apiKey;
+	$url .= "&x_login=" . $x_login . "&x_apiKey=" . $x_apiKey;
   }
   $output = json_decode(bitly_get_curl($url));
   if (isset($output->{'data'}->{'hash'})) {
-    $result['url'] = $output->{'data'}->{'url'};
-    $result['hash'] = $output->{'data'}->{'hash'};
-    $result['global_hash'] = $output->{'data'}->{'global_hash'};
-    $result['long_url'] = $output->{'data'}->{'long_url'};
-    $result['new_hash'] = $output->{'data'}->{'new_hash'};
+	$result['url'] = $output->{'data'}->{'url'};
+	$result['hash'] = $output->{'data'}->{'hash'};
+	$result['global_hash'] = $output->{'data'}->{'global_hash'};
+	$result['long_url'] = $output->{'data'}->{'long_url'};
+	$result['new_hash'] = $output->{'data'}->{'new_hash'};
   }
   $result['status_code'] = $output->status_code;
   return $result;
@@ -118,31 +118,31 @@ function bitly_v3_shorten($longUrl, $domain = '', $x_login = '', $x_apiKey = '')
 function bitly_v3_expand($data) {
   $results = array();
   if (is_array($data)) {
-    // we need to flatten this into one proper command
-    $recs = array();
-    foreach ($data as $rec) {
-      $tmp = explode('/', $rec);
-      $tmp = array_reverse($tmp);
-      array_push($recs, $tmp[0]);
-    }
-    $data = implode('&hash=', $recs);
+	// we need to flatten this into one proper command
+	$recs = array();
+	foreach ($data as $rec) {
+	  $tmp = explode('/', $rec);
+	  $tmp = array_reverse($tmp);
+	  array_push($recs, $tmp[0]);
+	}
+	$data = implode('&hash=', $recs);
   } else {
-    $tmp = explode('/', $data);
-    $tmp = array_reverse($tmp);
-    $data = $tmp[0];
+	$tmp = explode('/', $data);
+	$tmp = array_reverse($tmp);
+	$data = $tmp[0];
   }
   // make the call to expand
   $url = bitly_api . "expand?login=" . bitlyLogin . "&apiKey=" . bitlyKey . "&format=json&hash=" . $data;
   $output = json_decode(bitly_get_curl($url));
   if (isset($output->{'data'}->{'expand'})) {
-    foreach ($output->{'data'}->{'expand'} as $tmp) {
-      $rec = array();
-      $rec['hash'] = $tmp->{'hash'};
-      $rec['long_url'] = $tmp->{'long_url'};
-      $rec['user_hash'] = $tmp->{'user_hash'};
-      $rec['global_hash'] = $tmp->{'global_hash'};
-      array_push($results, $rec);
-    }
+	foreach ($output->{'data'}->{'expand'} as $tmp) {
+	  $rec = array();
+	  $rec['hash'] = $tmp->{'hash'};
+	  $rec['long_url'] = $tmp->{'long_url'};
+	  $rec['user_hash'] = $tmp->{'user_hash'};
+	  $rec['global_hash'] = $tmp->{'global_hash'};
+	  array_push($results, $rec);
+	}
   }
   return $results;
 }
@@ -165,7 +165,7 @@ function bitly_v3_validate($x_login, $x_apiKey) {
   $url = bitly_api . "validate?login=" . bitlyLogin . "&apiKey=" . bitlyKey . "&format=json&x_login=" . $x_login . "&x_apiKey=" . $x_apiKey;
   $output = json_decode(bitly_get_curl($url));
   if (isset($output->{'data'}->{'valid'})) {
-    $result = $output->{'data'}->{'valid'};
+	$result = $output->{'data'}->{'valid'};
   }
   return (bool) $result;
 }
@@ -193,31 +193,31 @@ function bitly_v3_validate($x_login, $x_apiKey) {
 function bitly_v3_clicks($data) {
   $results = array();
   if (is_array($data)) {
-    // we need to flatten this into one proper command
-    $recs = array();
-    foreach ($data as $rec) {
-      $tmp = explode('/', $rec);
-      $tmp = array_reverse($tmp);
-      array_push($recs, $tmp[0]);
-    }
-    $data = implode('&hash=', $recs);
+	// we need to flatten this into one proper command
+	$recs = array();
+	foreach ($data as $rec) {
+	  $tmp = explode('/', $rec);
+	  $tmp = array_reverse($tmp);
+	  array_push($recs, $tmp[0]);
+	}
+	$data = implode('&hash=', $recs);
   } else {
-    $tmp = explode('/', $data);
-    $tmp = array_reverse($tmp);
-    $data = $tmp[0];
+	$tmp = explode('/', $data);
+	$tmp = array_reverse($tmp);
+	$data = $tmp[0];
   }
   $url = bitly_api . "clicks?login=" . bitlyLogin . "&apiKey=" . bitlyKey . "&format=json&hash=" . $data;
   $output = json_decode(bitly_get_curl($url));
   if (isset($output->{'data'}->{'clicks'})) {
-    foreach ($output->{'data'}->{'clicks'} as $tmp) {
-      $rec = array();
-      $rec['short_url'] = !empty($tmp->{'short_url'}) ? $tmp->{'short_url'} : '';
-      $rec['global_hash'] = !empty($tmp->{'global_hash'}) ? $tmp->{'global_hash'} : '';
-      $rec['user_clicks'] = !empty($tmp->{'user_clicks'}) ? $tmp->{'user_clicks'} : 0;
-      $rec['user_hash'] = !empty($tmp->{'user_hash'}) ? $tmp->{'user_hash'} : '';
-      $rec['global_clicks'] = !empty($tmp->{'global_clicks'}) ? $tmp->{'global_clicks'} : 0;
-      array_push($results, $rec);
-    }
+	foreach ($output->{'data'}->{'clicks'} as $tmp) {
+	  $rec = array();
+	  $rec['short_url'] = !empty($tmp->{'short_url'}) ? $tmp->{'short_url'} : '';
+	  $rec['global_hash'] = !empty($tmp->{'global_hash'}) ? $tmp->{'global_hash'} : '';
+	  $rec['user_clicks'] = !empty($tmp->{'user_clicks'}) ? $tmp->{'user_clicks'} : 0;
+	  $rec['user_hash'] = !empty($tmp->{'user_hash'}) ? $tmp->{'user_hash'} : '';
+	  $rec['global_clicks'] = !empty($tmp->{'global_clicks'}) ? $tmp->{'global_clicks'} : 0;
+	  array_push($results, $rec);
+	}
   }
   return $results;
 }
@@ -252,19 +252,19 @@ function bitly_v3_referrers($data) {
   $url = bitly_api . "referrers?login=" . bitlyLogin . "&apiKey=" . bitlyKey . "&format=json&hash=" . $data;
   $output = json_decode(bitly_get_curl($url));
   if (isset($output->{'data'}->{'referrers'})) {
-    $results['created_by'] = $output->{'data'}->{'created_by'};
-    $results['global_hash'] = $output->{'data'}->{'global_hash'};
-    $results['short_url'] = $output->{'data'}->{'short_url'};
-    $results['user_hash'] = $output->{'data'}->{'user_hash'};
-    $results['referrers'] = array();
-    foreach ($output->{'data'}->{'referrers'} as $tmp) {
-      $rec = array();
-      $rec['clicks'] = $tmp->{'clicks'};
-      $rec['referrer'] = $tmp->{'referrer'};
-      $rec['referrer_app'] = $tmp->{'referrer_app'};
-      $rec['url'] = $tmp->{'url'};
-      array_push($results['referrers'], $rec);
-    }
+	$results['created_by'] = $output->{'data'}->{'created_by'};
+	$results['global_hash'] = $output->{'data'}->{'global_hash'};
+	$results['short_url'] = $output->{'data'}->{'short_url'};
+	$results['user_hash'] = $output->{'data'}->{'user_hash'};
+	$results['referrers'] = array();
+	foreach ($output->{'data'}->{'referrers'} as $tmp) {
+	  $rec = array();
+	  $rec['clicks'] = $tmp->{'clicks'};
+	  $rec['referrer'] = $tmp->{'referrer'};
+	  $rec['referrer_app'] = $tmp->{'referrer_app'};
+	  $rec['url'] = $tmp->{'url'};
+	  array_push($results['referrers'], $rec);
+	}
   }
   return $results;
 }
@@ -298,17 +298,17 @@ function bitly_v3_countries($data) {
   $url = bitly_api . "countries?login=" . bitlyLogin . "&apiKey=" . bitlyKey . "&format=json&hash=" . $data;
   $output = json_decode(bitly_get_curl($url));
   if (isset($output->{'data'}->{'countries'})) {
-    $results['created_by'] = $output->{'data'}->{'created_by'};
-    $results['global_hash'] = $output->{'data'}->{'global_hash'};
-    $results['short_url'] = $output->{'data'}->{'short_url'};
-    $results['user_hash'] = $output->{'data'}->{'user_hash'};
-    $results['countries'] = array();
-    foreach ($output->{'data'}->{'countries'} as $tmp) {
-      $rec = array();
-      $rec['clicks'] = $tmp->{'clicks'};
-      $rec['country'] = $tmp->{'country'};
-      array_push($results['countries'], $rec);
-    }
+	$results['created_by'] = $output->{'data'}->{'created_by'};
+	$results['global_hash'] = $output->{'data'}->{'global_hash'};
+	$results['short_url'] = $output->{'data'}->{'short_url'};
+	$results['user_hash'] = $output->{'data'}->{'user_hash'};
+	$results['countries'] = array();
+	foreach ($output->{'data'}->{'countries'} as $tmp) {
+	  $rec = array();
+	  $rec['clicks'] = $tmp->{'clicks'};
+	  $rec['country'] = $tmp->{'country'};
+	  array_push($results['countries'], $rec);
+	}
   }
   return $results;
 }
@@ -336,30 +336,30 @@ function bitly_v3_countries($data) {
 function bitly_v3_clicks_by_minute($data) {
   $results = array();
   if (is_array($data)) {
-    // we need to flatten this into one proper command
-    $recs = array();
-    foreach ($data as $rec) {
-      $tmp = explode('/', $rec);
-      $tmp = array_reverse($tmp);
-      array_push($recs, $tmp[0]);
-    }
-    $data = implode('&hash=', $recs);
+	// we need to flatten this into one proper command
+	$recs = array();
+	foreach ($data as $rec) {
+	  $tmp = explode('/', $rec);
+	  $tmp = array_reverse($tmp);
+	  array_push($recs, $tmp[0]);
+	}
+	$data = implode('&hash=', $recs);
   } else {
-    $tmp = explode('/', $data);
-    $tmp = array_reverse($tmp);
-    $data = $tmp[0];
+	$tmp = explode('/', $data);
+	$tmp = array_reverse($tmp);
+	$data = $tmp[0];
   }
   $url = bitly_api . "clicks_by_minute?login=" . bitlyLogin . "&apiKey=" . bitlyKey . "&format=json&hash=" . $data;
   $output = json_decode(bitly_get_curl($url));
   if (isset($output->{'data'}->{'clicks_by_minute'})) {
-    foreach ($output->{'data'}->{'clicks_by_minute'} as $tmp) {
-      $rec = array();
-      $rec['clicks'] = $tmp->{'clicks'};
-      $rec['global_hash'] = $tmp->{'global_hash'};
-      $rec['short_url'] = $tmp->{'short_url'};
-      $rec['user_hash'] = $tmp->{'user_hash'};
-      array_push($results, $rec);
-    }
+	foreach ($output->{'data'}->{'clicks_by_minute'} as $tmp) {
+	  $rec = array();
+	  $rec['clicks'] = $tmp->{'clicks'};
+	  $rec['global_hash'] = $tmp->{'global_hash'};
+	  $rec['short_url'] = $tmp->{'short_url'};
+	  $rec['user_hash'] = $tmp->{'user_hash'};
+	  array_push($results, $rec);
+	}
   }
   return $results;
 }
@@ -389,37 +389,37 @@ function bitly_v3_clicks_by_minute($data) {
 function bitly_v3_clicks_by_day($data, $days = 7) {
   $results = array();
   if (is_array($data)) {
-    // we need to flatten this into one proper command
-    $recs = array();
-    foreach ($data as $rec) {
-      $tmp = explode('/', $rec);
-      $tmp = array_reverse($tmp);
-      array_push($recs, $tmp[0]);
-    }
-    $data = implode('&hash=', $recs);
+	// we need to flatten this into one proper command
+	$recs = array();
+	foreach ($data as $rec) {
+	  $tmp = explode('/', $rec);
+	  $tmp = array_reverse($tmp);
+	  array_push($recs, $tmp[0]);
+	}
+	$data = implode('&hash=', $recs);
   } else {
-    $tmp = explode('/', $data);
-    $tmp = array_reverse($tmp);
-    $data = $tmp[0];
+	$tmp = explode('/', $data);
+	$tmp = array_reverse($tmp);
+	$data = $tmp[0];
   }
   $url = bitly_api . "clicks_by_day?login=" . bitlyLogin . "&apiKey=" . bitlyKey . "&format=json&days=" . $days . "&hash=" . $data;
   $output = json_decode(bitly_get_curl($url));
   if (isset($output->{'data'}->{'clicks_by_day'})) {
-    foreach ($output->{'data'}->{'clicks_by_day'} as $tmp) {
-      $rec = array();
-      $rec['global_hash'] = $tmp->{'global_hash'};
-      $rec['short_url'] = $tmp->{'short_url'};
-      $rec['user_hash'] = $tmp->{'user_hash'};
-      $rec['clicks'] = array();
-      $clicks = $tmp->{'clicks'};
-      foreach ($clicks as $click) {
-        $clickrec = array();
-        $clickrec['clicks'] = $click->{'clicks'};
-        $clickrec['day_start'] = $click->{'day_start'};
-        array_push($rec['clicks'], $clickrec);
-      }
-      array_push($results, $rec);
-    }
+	foreach ($output->{'data'}->{'clicks_by_day'} as $tmp) {
+	  $rec = array();
+	  $rec['global_hash'] = $tmp->{'global_hash'};
+	  $rec['short_url'] = $tmp->{'short_url'};
+	  $rec['user_hash'] = $tmp->{'user_hash'};
+	  $rec['clicks'] = array();
+	  $clicks = $tmp->{'clicks'};
+	  foreach ($clicks as $click) {
+		$clickrec = array();
+		$clickrec['clicks'] = $click->{'clicks'};
+		$clickrec['day_start'] = $click->{'day_start'};
+		array_push($rec['clicks'], $clickrec);
+	  }
+	  array_push($results, $rec);
+	}
   }
   return $results;
 }
@@ -444,8 +444,8 @@ function bitly_v3_bitly_pro_domain($domain) {
   $url = bitly_api . "bitly_pro_domain?login=" . bitlyLogin . "&apiKey=" . bitlyKey . "&format=json&domain=" . $domain;
   $output = json_decode(bitly_get_curl($url));
   if (isset($output->{'data'}->{'bitly_pro_domain'})) {
-    $result['domain'] = $output->{'data'}->{'domain'};
-    $result['bitly_pro_domain'] = $output->{'data'}->{'bitly_pro_domain'};
+	$result['domain'] = $output->{'data'}->{'domain'};
+	$result['bitly_pro_domain'] = $output->{'data'}->{'bitly_pro_domain'};
   }
   return $result;
 }
@@ -469,25 +469,25 @@ function bitly_v3_bitly_pro_domain($domain) {
 function bitly_v3_lookup($data) {
   $results = array();
   if (is_array($data)) {
-    // we need to flatten this into one proper command
-    $recs = array();
-    foreach ($data as $rec) {
-      array_push($recs, urlencode($rec));
-    }
-    $data = implode('&url=', $recs);
+	// we need to flatten this into one proper command
+	$recs = array();
+	foreach ($data as $rec) {
+	  array_push($recs, urlencode($rec));
+	}
+	$data = implode('&url=', $recs);
   } else {
-    $data = urlencode($data);
+	$data = urlencode($data);
   }
   $url = bitly_oauth_api . "lookup?url=" . $data . "&access_token=" . bitlyKey;
   $output = json_decode(bitly_get_curl($url));
   if (isset($output->{'data'}->{'lookup'})) {
-    foreach ($output->{'data'}->{'lookup'} as $tmp) {
-      $rec = array();
-      $rec['global_hash'] = $tmp->{'global_hash'};
-      $rec['short_url'] = $tmp->{'short_url'};
-      $rec['url'] = $tmp->{'url'};
-      array_push($results, $rec);
-    }
+	foreach ($output->{'data'}->{'lookup'} as $tmp) {
+	  $rec = array();
+	  $rec['global_hash'] = $tmp->{'global_hash'};
+	  $rec['short_url'] = $tmp->{'short_url'};
+	  $rec['url'] = $tmp->{'url'};
+	  array_push($results, $rec);
+	}
   }
   return $results;
 }
@@ -521,9 +521,9 @@ function bitly_v3_authenticate($x_login, $x_password) {
   $params['x_password'] = $x_password;
   $output = json_decode(bitly_post_curl($url, $params));
   if (isset($output->{'data'}->{'authenticate'})) {
-    $result['successful'] = $output->{'data'}->{'authenticate'}->{'successful'};
-    $result['username'] = $output->{'data'}->{'authenticate'}->{'username'};
-    $result['api_key'] = $output->{'data'}->{'authenticate'}->{'api_key'};
+	$result['successful'] = $output->{'data'}->{'authenticate'}->{'successful'};
+	$result['username'] = $output->{'data'}->{'authenticate'}->{'username'};
+	$result['api_key'] = $output->{'data'}->{'authenticate'}->{'api_key'};
   }
   return $result;
 }
@@ -549,32 +549,32 @@ function bitly_v3_authenticate($x_login, $x_password) {
 function bitly_v3_info($data) {
   $results = array();
   if (is_array($data)) {
-    // we need to flatten this into one proper command
-    $recs = array();
-    foreach ($data as $rec) {
-      $tmp = explode('/', $rec);
-      $tmp = array_reverse($tmp);
-      array_push($recs, $tmp[0]);
-    }
-    $data = implode('&hash=', $recs);
+	// we need to flatten this into one proper command
+	$recs = array();
+	foreach ($data as $rec) {
+	  $tmp = explode('/', $rec);
+	  $tmp = array_reverse($tmp);
+	  array_push($recs, $tmp[0]);
+	}
+	$data = implode('&hash=', $recs);
   } else {
-    $tmp = explode('/', $data);
-    $tmp = array_reverse($tmp);
-    $data = $tmp[0];
+	$tmp = explode('/', $data);
+	$tmp = array_reverse($tmp);
+	$data = $tmp[0];
   }
   // make the call to expand
   $url = bitly_api . "info?login=" . bitlyLogin . "&apiKey=" . bitlyKey . "&format=json&hash=" . $data;
   $output = json_decode(bitly_get_curl($url));
   if (isset($output->{'data'}->{'info'})) {
-    foreach ($output->{'data'}->{'info'} as $tmp) {
-      $rec = array();
-      $rec['created_by'] = $tmp->{'created_by'};
-      $rec['global_hash'] = $tmp->{'global_hash'};
-      $rec['hash'] = $tmp->{'hash'};
-      $rec['title'] = $tmp->{'title'};
-      $rec['user_hash'] = $tmp->{'user_hash'};
-      array_push($results, $rec);
-    }
+	foreach ($output->{'data'}->{'info'} as $tmp) {
+	  $rec = array();
+	  $rec['created_by'] = $tmp->{'created_by'};
+	  $rec['global_hash'] = $tmp->{'global_hash'};
+	  $rec['hash'] = $tmp->{'hash'};
+	  $rec['title'] = $tmp->{'title'};
+	  $rec['user_hash'] = $tmp->{'user_hash'};
+	  array_push($results, $rec);
+	}
   }
   return $results;
 }
@@ -607,8 +607,8 @@ function bitly_oauth_access_token($code, $redirect) {
   $output = bitly_post_curl($url, $params);
   $parts = explode('&', $output);
   foreach ($parts as $part) {
-    $bits = explode('=', $part);
-    $results[$bits[0]] = $bits[1];
+	$bits = explode('=', $part);
+	$results[$bits[0]] = $bits[1];
   }
   return $results;
 }
@@ -639,15 +639,15 @@ function bitly_v3_user_clicks($access_token, $days = 7) {
   $url = bitly_oauth_api . "user/clicks?access_token=" . $access_token . "&days=" . $days;
   $output = json_decode(bitly_get_curl($url));
   if (isset($output->{'data'}->{'clicks'})) {
-    $results['days'] = $output->{'data'}->{'days'};
-    $results['total_clicks'] = $output->{'data'}->{'total_clicks'};
-    $results['clicks'] = array();
-    foreach ($output->{'data'}->{'clicks'} as $clicks) {
-      $rec = array();
-      $rec['clicks'] = $clicks->{'clicks'};
-      $rec['day_start'] = $clicks->{'day_start'};
-      array_push($results['clicks'], $rec);
-    }
+	$results['days'] = $output->{'data'}->{'days'};
+	$results['total_clicks'] = $output->{'data'}->{'total_clicks'};
+	$results['clicks'] = array();
+	foreach ($output->{'data'}->{'clicks'} as $clicks) {
+	  $rec = array();
+	  $rec['clicks'] = $clicks->{'clicks'};
+	  $rec['day_start'] = $clicks->{'day_start'};
+	  array_push($results['clicks'], $rec);
+	}
   }
   return $results;
 }
@@ -677,18 +677,18 @@ function bitly_v3_user_referrers($access_token, $days = 7) {
   $url = bitly_oauth_api . "user/referrers?access_token=" . $access_token . "&days=" . $days;
   $output = json_decode(bitly_get_curl($url));
   if (isset($output->{'data'}->{'referrers'})) {
-    $results['days'] = $output->{'data'}->{'days'};
-    $results['referrers'] = array();
-    foreach ($output->{'data'}->{'referrers'} as $referrers) {
-      $recs = array();
-      foreach ($referrers as $ref) {
-        $rec = array();
-        $rec['referrer'] = $ref->{'referrer'};
-        $rec['clicks'] = $ref->{'clicks'};
-        array_push($recs, $rec);
-      }
-      array_push($results['referrers'], $recs);
-    }
+	$results['days'] = $output->{'data'}->{'days'};
+	$results['referrers'] = array();
+	foreach ($output->{'data'}->{'referrers'} as $referrers) {
+	  $recs = array();
+	  foreach ($referrers as $ref) {
+		$rec = array();
+		$rec['referrer'] = $ref->{'referrer'};
+		$rec['clicks'] = $ref->{'clicks'};
+		array_push($recs, $rec);
+	  }
+	  array_push($results['referrers'], $recs);
+	}
   }
   return $results;
 }
@@ -718,18 +718,18 @@ function bitly_v3_user_countries($access_token, $days = 7) {
   $url = bitly_oauth_api . "user/countries?access_token=" . $access_token . "&days=" . $days;
   $output = json_decode(bitly_get_curl($url));
   if (isset($output->{'data'}->{'countries'})) {
-    $results['days'] = $output->{'data'}->{'days'};
-    $results['countries'] = array();
-    foreach ($output->{'data'}->{'countries'} as $countries) {
-      $recs = array();
-      foreach ($countries as $country) {
-        $rec = array();
-        $rec['country'] = $country->{'country'};
-        $rec['clicks'] = $country->{'clicks'};
-        array_push($recs, $rec);
-      }
-      array_push($results['countries'], $recs);
-    }
+	$results['days'] = $output->{'data'}->{'days'};
+	$results['countries'] = array();
+	foreach ($output->{'data'}->{'countries'} as $countries) {
+	  $recs = array();
+	  foreach ($countries as $country) {
+		$rec = array();
+		$rec['country'] = $country->{'country'};
+		$rec['clicks'] = $country->{'clicks'};
+		array_push($recs, $rec);
+	  }
+	  array_push($results['countries'], $recs);
+	}
   }
   return $results;
 }
@@ -754,12 +754,12 @@ function bitly_v3_user_realtime_links($access_token) {
   $url = bitly_oauth_api . "user/realtime_links?format=json&access_token=" . $access_token;
   $output = json_decode(bitly_get_curl($url));
   if (isset($output->{'data'}->{'realtime_links'})) {
-    foreach ($output->{'data'}->{'realtime_links'} as $realtime_links) {
-      $rec = array();
-      $rec['clicks'] = $realtime_links->{'clicks'};
-      $rec['user_hash'] = $realtime_links->{'user_hash'};
-      array_push($results, $rec);
-    }
+	foreach ($output->{'data'}->{'realtime_links'} as $realtime_links) {
+	  $rec = array();
+	  $rec['clicks'] = $realtime_links->{'clicks'};
+	  $rec['user_hash'] = $realtime_links->{'user_hash'};
+	  array_push($results, $rec);
+	}
   }
   return $results;
 }
@@ -790,20 +790,20 @@ function bitly_v3_user_link_history($access_token) {
   $url = bitly_oauth_api . "user/link_history?format=json&access_token=" . $access_token;
   $output = json_decode(bitly_get_curl($url));
   if (isset($output->{'data'}->{'link_history'})) {
-    foreach ($output->{'data'}->{'link_history'} as $link_history) {
-      $rec = array();
-      $rec['aggregate_link'] = $link_history->{'aggregate_link'};
-      $rec['archived'] = $link_history->{'archived'};
-      $rec['client_id'] = $link_history->{'client_id'};
-      $rec['created_at'] = $link_history->{'created_at'};
-      $rec['link'] = $link_history->{'link'};
-      $rec['long_url'] = $link_history->{'long_url'};
-      $rec['modified_at'] = $link_history->{'modified_at'};
-      $rec['private'] = $link_history->{'private'};
-      $rec['title'] = $link_history->{'title'};
-      $rec['user_ts'] = $link_history->{'user_ts'};
-      array_push($results, $rec);
-    }
+	foreach ($output->{'data'}->{'link_history'} as $link_history) {
+	  $rec = array();
+	  $rec['aggregate_link'] = $link_history->{'aggregate_link'};
+	  $rec['archived'] = $link_history->{'archived'};
+	  $rec['client_id'] = $link_history->{'client_id'};
+	  $rec['created_at'] = $link_history->{'created_at'};
+	  $rec['link'] = $link_history->{'link'};
+	  $rec['long_url'] = $link_history->{'long_url'};
+	  $rec['modified_at'] = $link_history->{'modified_at'};
+	  $rec['private'] = $link_history->{'private'};
+	  $rec['title'] = $link_history->{'title'};
+	  $rec['user_ts'] = $link_history->{'user_ts'};
+	  array_push($results, $rec);
+	}
   }
   return $results;
 }
@@ -828,9 +828,9 @@ function bitly_v3_highvalue($access_token, $limit = 5) {
   $url = bitly_oauth_api . "highvalue?access_token=" . $access_token . "&limit=" . $limit;
   $output = json_decode(bitly_get_curl($url));
   if (isset($output->{'data'}->{'values'})) {
-    foreach ($output->{'data'}->{'values'} as $link) {
-      array_push($results, $link);
-    }
+	foreach ($output->{'data'}->{'values'} as $link) {
+	  array_push($results, $link);
+	}
   }
   return $results;
 }
@@ -874,27 +874,27 @@ function bitly_v3_search($access_token, $query, $limit = 10, $offset = 0, $domai
   $results = array();
   $url = bitly_oauth_api . "search?access_token=" . $access_token . "&query=" . urlencode($query) . "&limit=" . $limit . "&offset=" . $offset;
   if ($domain != '') {
-    $url .= '&domain=' . urlencode($domain);
+	$url .= '&domain=' . urlencode($domain);
   }
   if ($lang != '') {
-    $url .= '&lang=' . urlencode($lang);
+	$url .= '&lang=' . urlencode($lang);
   }
   if ($cities != '') {
-    $url .= '&cities=' . urlencode($cities);
+	$url .= '&cities=' . urlencode($cities);
   }
   if (!empty($fields)) {
-    # only return certain fields
-    $url .= '&fields=' . implode(',', $fields);
+	# only return certain fields
+	$url .= '&fields=' . implode(',', $fields);
   }
   $output = json_decode(bitly_get_curl($url));
   if (isset($output->{'data'}->{'results'})) {
-    foreach ($output->{'data'}->{'results'} as $result) {
-      $res = array();
-      foreach ($result as $key => $val) {
-        $res[$key] = $val;
-      }
-      array_push($results, $res);
-    }
+	foreach ($output->{'data'}->{'results'} as $result) {
+	  $res = array();
+	  foreach ($result as $key => $val) {
+		$res[$key] = $val;
+	  }
+	  array_push($results, $res);
+	}
   }
   return $results;
 }
@@ -916,29 +916,29 @@ function bitly_v3_realtime_bursting_phrases($access_token) {
   $url = bitly_oauth_api . "realtime/bursting_phrases?access_token=" . $access_token;
   $output = json_decode(bitly_get_curl($url));
   if (isset($output->{'data'}->{'phrases'})) {
-    foreach ($output->{'data'}->{'phrases'} as $phrase) {
-      $res = array();
-      $res['std'] = $phrase->{'std'};
-      $res['ghashes'] = array();
-      foreach($phrase->{'ghashes'} as $ghashes) {
-        $temp = array();
-        $temp['visitors'] = $ghashes->{'visitors'};
-        $temp['ghash'] = $ghashes->{'ghash'};
-        array_push($res['ghashes'], $temp);
-      }
-      $res['N'] = $phrase->{'N'};
-      $res['rate'] = $phrase->{'rate'};
-      $res['urls'] = array();
-      foreach($phrase->{'urls'} as $urls) {
-        $temp = array();
-        $temp['visitors'] = $urls->{'visitors'};
-        $temp['aggregate_url'] = $urls->{'aggregate_url'};
-        array_push($res['urls'], $temp);
-      }
-      $res['phrase'] = $phrase->{'phrase'};
-      $res['mean'] = $phrase->{'mean'};
-      array_push($results, $res);
-    }
+	foreach ($output->{'data'}->{'phrases'} as $phrase) {
+	  $res = array();
+	  $res['std'] = $phrase->{'std'};
+	  $res['ghashes'] = array();
+	  foreach($phrase->{'ghashes'} as $ghashes) {
+		$temp = array();
+		$temp['visitors'] = $ghashes->{'visitors'};
+		$temp['ghash'] = $ghashes->{'ghash'};
+		array_push($res['ghashes'], $temp);
+	  }
+	  $res['N'] = $phrase->{'N'};
+	  $res['rate'] = $phrase->{'rate'};
+	  $res['urls'] = array();
+	  foreach($phrase->{'urls'} as $urls) {
+		$temp = array();
+		$temp['visitors'] = $urls->{'visitors'};
+		$temp['aggregate_url'] = $urls->{'aggregate_url'};
+		array_push($res['urls'], $temp);
+	  }
+	  $res['phrase'] = $phrase->{'phrase'};
+	  $res['mean'] = $phrase->{'mean'};
+	  array_push($results, $res);
+	}
   }
   return $results;
 }
@@ -960,22 +960,22 @@ function bitly_v3_realtime_hot_phrases($access_token) {
   $url = bitly_oauth_api . "realtime/bursting_phrases?access_token=" . $access_token;
   $output = json_decode(bitly_get_curl($url));
   if (isset($output->{'data'}->{'phrases'})) {
-    $results['lag'] = $output->{'data'}->{'lag'};
-    $results['time'] = $output->{'data'}->{'time'};
-    $results['phrases'] = array();
-    foreach ($output->{'data'}->{'phrases'} as $phrase) {
-      $res = array();
-      $res['phrase'] = $phrase->{'phrase'};
-      $res['rate'] = $phrase->{'rate'};
-      $res['ghashes'] = array();
-      foreach($phrase->{'ghashes'} as $ghashes) {
-        $temp = array();
-        $temp['visitors'] = $ghashes->{'visitors'};
-        $temp['ghash'] = $ghashes->{'ghash'};
-        array_push($res['ghashes'], $temp);
-      }
-      array_push($results['phrases'], $res);
-    }
+	$results['lag'] = $output->{'data'}->{'lag'};
+	$results['time'] = $output->{'data'}->{'time'};
+	$results['phrases'] = array();
+	foreach ($output->{'data'}->{'phrases'} as $phrase) {
+	  $res = array();
+	  $res['phrase'] = $phrase->{'phrase'};
+	  $res['rate'] = $phrase->{'rate'};
+	  $res['ghashes'] = array();
+	  foreach($phrase->{'ghashes'} as $ghashes) {
+		$temp = array();
+		$temp['visitors'] = $ghashes->{'visitors'};
+		$temp['ghash'] = $ghashes->{'ghash'};
+		array_push($res['ghashes'], $temp);
+	  }
+	  array_push($results['phrases'], $res);
+	}
   }
   return $results;
 }
@@ -995,10 +995,10 @@ function bitly_v3_realtime_clickrate($access_token, $phrase) {
   $url = bitly_oauth_api . "realtime/clickrate?access_token=" . $access_token . "&phrase=" . urlencode($phrase);
   $output = json_decode(bitly_get_curl($url));
   if (isset($output->{'data'}->{'phrase'})) {
-    $results['phrase'] = $output->{'data'}->{'phrase'};
-    $results['rate'] = $output->{'data'}->{'rate'};
-    $results['lag'] = $output->{'data'}->{'lag'};
-    $results['time'] = $output->{'data'}->{'time'};
+	$results['phrase'] = $output->{'data'}->{'phrase'};
+	$results['rate'] = $output->{'data'}->{'rate'};
+	$results['lag'] = $output->{'data'}->{'lag'};
+	$results['time'] = $output->{'data'}->{'time'};
   }
   return $results;
 }
@@ -1018,11 +1018,11 @@ function bitly_v3_link_info($access_token, $link) {
   $url = bitly_oauth_api . "link/info?access_token=" . $access_token . "&link=" . urlencode($link);
   $output = json_decode(bitly_get_curl($url));
   if (isset($output->{'data'}->{'original_url'})) {
-    foreach ($output->{'data'} as $key=>$val) {
-      if (!is_array($val)) {
-        $results[$key] = $val;
-      }
-    }
+	foreach ($output->{'data'} as $key=>$val) {
+	  if (!is_array($val)) {
+		$results[$key] = $val;
+	  }
+	}
   }
   return $results;
 }
@@ -1043,8 +1043,8 @@ function bitly_v3_link_content($access_token, $link) {
   $url = bitly_oauth_api . "link/content?access_token=" . $access_token . "&link=" . urlencode($link);
   $output = json_decode(bitly_get_curl($url));
   if (isset($output->{'data'}->{'content'})) {
-    $results['content'] = $output->{'data'}->{'content'};
-    $results['content_type'] = $output->{'data'}->{'content_type'};
+	$results['content'] = $output->{'data'}->{'content'};
+	$results['content_type'] = $output->{'data'}->{'content_type'};
   }
   return $results;
 }
@@ -1065,9 +1065,9 @@ function bitly_v3_link_category($access_token, $link) {
   $url = bitly_oauth_api . "link/category?access_token=" . $access_token . "&link=" . urlencode($link);
   $output = json_decode(bitly_get_curl($url));
   if (isset($output->{'data'}->{'categories'})) {
-    foreach ($output->{'data'}->{'categories'} as $category) {
-      array_push($results, $category);
-    }
+	foreach ($output->{'data'}->{'categories'} as $category) {
+	  array_push($results, $category);
+	}
   }
   return $results;
 }
@@ -1090,9 +1090,9 @@ function bitly_v3_link_social($access_token, $link) {
   $url = bitly_oauth_api . "link/social?access_token=" . $access_token . "&link=" . urlencode($link);
   $output = json_decode(bitly_get_curl($url));
   if (isset($output->{'data'}->{'social_scores'})) {
-    foreach ($output->{'data'}->{'social_scores'} as $key=>$val) {
-      $results[$key] = $val;
-    }
+	foreach ($output->{'data'}->{'social_scores'} as $key=>$val) {
+	  $results[$key] = $val;
+	}
   }
   return $results;
 }
@@ -1113,9 +1113,9 @@ function bitly_v3_link_location($access_token, $link) {
   $url = bitly_oauth_api . "link/location?access_token=" . $access_token . "&link=" . urlencode($link);
   $output = json_decode(bitly_get_curl($url));
   if (isset($output->{'data'}->{'locations'})) {
-    foreach ($output->{'data'}->{'locations'} as $location) {
-      array_push($results, $location);
-    }
+	foreach ($output->{'data'}->{'locations'} as $location) {
+	  array_push($results, $location);
+	}
   }
   return $results;
 }
@@ -1138,9 +1138,9 @@ function bitly_v3_link_language($access_token, $link) {
   $url = bitly_oauth_api . "link/language?access_token=" . $access_token . "&link=" . urlencode($link);
   $output = json_decode(bitly_get_curl($url));
   if (isset($output->{'data'}->{'languages'})) {
-    foreach ($output->{'data'}->{'languages'} as $key=>$val) {
-      $results[$key] = $val;
-    }
+	foreach ($output->{'data'}->{'languages'} as $key=>$val) {
+	  $results[$key] = $val;
+	}
   }
   return $results;
 }
@@ -1152,18 +1152,9 @@ function bitly_v3_link_language($access_token, $link) {
 * URI to call.
 */
 function bitly_get_curl($uri) {
-  $output = "";
-  try {
-    $ch = curl_init($uri);
-    curl_setopt($ch, CURLOPT_HEADER, 0);
-    curl_setopt($ch, CURLOPT_TIMEOUT, 4);
-    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 2);
-    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-    $output = curl_exec($ch);
-  } catch (Exception $e) {
-  }
+  $output   = "";
+  $response = wp_remote_get( $uri );
+  $output  = wp_remote_retrieve_body( $response );
   return $output;
 }
 
@@ -1178,22 +1169,10 @@ function bitly_get_curl($uri) {
 function bitly_post_curl($uri, $fields) {
   $output = "";
   $fields_string = "";
-  foreach($fields as $key=>$value) { $fields_string .= $key.'='.$value.'&'; }
-  rtrim($fields_string,'&');
-  try {
-    $ch = curl_init($uri);
-    curl_setopt($ch, CURLOPT_HEADER, 0);
-    curl_setopt($ch,CURLOPT_POST,count($fields));
-    curl_setopt($ch,CURLOPT_POSTFIELDS,$fields_string);
-    curl_setopt($ch, CURLOPT_TIMEOUT, 2);
-    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 2);
-    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-    $output = curl_exec($ch);
-  } catch (Exception $e) {
-  }
+  $args = array(
+	'body' => $fields
+  );
+  $response =  wp_remote_post( $uri, $args );
+  $output   = wp_remote_retrieve_body( $response );
   return $output;
 }
-
-?>
