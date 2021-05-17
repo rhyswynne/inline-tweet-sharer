@@ -34,12 +34,12 @@ define('bitlyKey', $bitlyapikey);
 /**
 * The URI of the standard bitly v3 API.
 */
-define('bitly_api', 'http://api.bit.ly/v3/');
+define('bitly_api', 'http://api.bit.ly/v4/');
 
 /**
 * The URI of the bitly OAuth endpoints.
 */
-define('bitly_oauth_api', 'https://api-ssl.bit.ly/v3/');
+define('bitly_oauth_api', 'https://api-ssl.bit.ly/v4/');
 
 /**
 * The URI for OAuth access token requests.
@@ -95,6 +95,8 @@ function bitly_v3_shorten($longUrl, $domain = '', $x_login = '', $x_apiKey = '')
 	$result['new_hash'] = $output->{'data'}->{'new_hash'};
   }
   $result['status_code'] = $output->status_code;
+
+
   return $result;
 }
 

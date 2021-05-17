@@ -20,7 +20,7 @@ function inline_tweet_sharer_shortcode( $atts, $content = null ) {
 	$tweetlink = inline_tweet_sharer_create_tweet( esc_attr( $prefix ), esc_attr( $tweeter ), esc_attr( $suffix ), esc_attr( $removespaces ), $content );
 
 	return $tweetlink;
-} 
+}
 
 
 function inline_tweet_sharer_create_tweet( $prefix = "", $tweeter = "", $suffix = "", $removespaces, $content, $linktotweet = "", $extrafields = "" ) {
@@ -40,7 +40,7 @@ function inline_tweet_sharer_create_tweet( $prefix = "", $tweeter = "", $suffix 
 	if ( "1" == get_option( 'inline-tweet-sharer-bitly' ) ) {
 		$urlshortener = get_option( 'inline-tweet-sharer-urlshortened' );
 		if ( !$urlshortener ) { $urlshortener = "bit.ly"; }
-		$results = bitly_v3_shorten( $linktotweet, $urlshortener );
+		$results   = bitly4_shorten_a_link( $linktotweet, $urlshortener );
 		$permalink = $results['url'];
 	} else {
 		$permalink = $linktotweet;
@@ -77,7 +77,7 @@ function inline_tweet_sharer_create_tweet( $prefix = "", $tweeter = "", $suffix 
 	 * Filter inline_tweet_sharer_change_tweet_string
 	 *
 	 * Changes the tweet string to whatever you wish.
-	 * 
+	 *
 	 * @var string
 	 */
 	$tweetlinkstring = apply_filters( 'inline_tweet_sharer_change_tweet_string', $tweetlinkstring );
@@ -90,17 +90,17 @@ function inline_tweet_sharer_create_tweet( $prefix = "", $tweeter = "", $suffix 
 		}
 	}
 
-	
 
-	if ( ( strlen( $tweetlinkstring ) + 24 ) > ITS_TWEET_LENGTH ) { 
-		$tweetlinkstring = substr( $tweetlinkstring, 0, ( ITS_TWEET_LENGTH-( strlen( $tweetlinkstring ) + 25 ) ) ); 
-		$tweetlinkstring = preg_replace( '/ [^ ]*$/', '...', $tweetlinkstring ); 
+
+	if ( ( strlen( $tweetlinkstring ) + 24 ) > ITS_TWEET_LENGTH ) {
+		$tweetlinkstring = substr( $tweetlinkstring, 0, ( ITS_TWEET_LENGTH-( strlen( $tweetlinkstring ) + 25 ) ) );
+		$tweetlinkstring = preg_replace( '/ [^ ]*$/', '...', $tweetlinkstring );
 	}
 
 	if ( "1" == get_option( 'inline-tweet-sharer-capitalise' ) ) {
 		$tweetlinkstring = ucfirst( $tweetlinkstring );
 	}
-	
+
 	$tweetlinkstring = urlencode( html_entity_decode( $tweetlinkstring, ENT_COMPAT, get_bloginfo('charset') ) );
 
 	$extraclass=get_option( 'inline-tweet-sharer-extraclass' );

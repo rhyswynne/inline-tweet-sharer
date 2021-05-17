@@ -1,18 +1,18 @@
 === Inline Tweet Sharer - Twitter Sharing Plugin  ===
 Plugin Name: Inline Tweet Sharer
-Plugin URI: https://www.winwar.co.uk/plugins/inline-tweet-sharer/  
-Donate link: https://www.winwar.co.uk/plugins/inline-tweet-sharer/#donate 
+Plugin URI: https://www.winwar.co.uk/plugins/inline-tweet-sharer/
+Donate link: https://www.winwar.co.uk/plugins/inline-tweet-sharer/#donate
 Description: Create twitter links on your site that tweet memorable quotes in your text to help increase social media views, similar to the New York Times.
-Version:      2.2.1
+Version:      2.5.3
 Author:       Rhys Wynne
 Author URI:   https://www.winwar.co.uk/
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Contributors: rhyswynne
-Link: 
+Link:
 Tags: twitter, social media, social media marketing, social media promotion, tweet, new york times, gutenberg ready
 Requires at least: 3.8
-Tested up to: 5.0
+Tested up to: 5.7
 Stable tag: trunk
 
 == Description ==
@@ -65,6 +65,26 @@ To contribute a translation, please [contact me](http://winwar.co.uk/contact-us/
 1. Example of how the twitter feed appears in your site.
 
 == Changelog ==
+= 2.5.3 = 
+* Tested with 5.7
+
+= 2.5.1 =
+* Tested with 5.5
+
+= 2.5 =
+* Changed to Bitly API version 4.
+* Removed Stumbleupon & Google +1.
+
+= 2.4 =
+* Added the ability to disable the CSS.
+* Fixed a display bug in the options page.
+
+= 2.3.2 =
+* Tested with 5.2
+
+= 2.3.1 =
+* Tested with 5.2
+
 = 2.3 =
 * Change in structure of bit.ly integration. Please check to make sure you're still connected.
 
@@ -82,7 +102,7 @@ To contribute a translation, please [contact me](http://winwar.co.uk/contact-us/
 = 2.1.1 =
 * Fixes bug by linking to the paginated post, rather than the front page.
 
-= 2.1 = 
+= 2.1 =
 * Increase Tweet Length to the new 280 length
 * Segmented Newsletter to seperate those who just want plugin updates, and those who want more of the newsletter.
 
@@ -157,7 +177,7 @@ Total Time Taken - 23 minutes
 * Tested with WordPress 3.8
 
 = 1.2.0 =
-* Added an extra option where you can create a wrapper div around the tweet. Use this to make the Inline Tweet Sharer not inline :). 
+* Added an extra option where you can create a wrapper div around the tweet. Use this to make the Inline Tweet Sharer not inline :).
 
 = 1.1.0 =
 * Added Internationalisation.
@@ -167,10 +187,10 @@ Total Time Taken - 23 minutes
 * Fixed a spelling mistake in the readme file :)
 
 = 1.0.7 =
-* Fixed a bug when people clicked "Cancel" the word "null" was shared. 
+* Fixed a bug when people clicked "Cancel" the word "null" was shared.
 
 = 1.0.6.1 =
-* Spelling mistake in the readme.txt affected the look of the wordpress.org listing. 
+* Spelling mistake in the readme.txt affected the look of the wordpress.org listing.
 
 = 1.0.6 =
 * Bug fix that strips the HTML tags for tweeted text

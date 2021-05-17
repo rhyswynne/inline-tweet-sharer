@@ -71,6 +71,11 @@ function inline_tweet_sharer_options() {
 							</tr>
 
 							<tr valign="top">
+								<th scope="row" style="width:400px"><label for="inline-tweet-sharer-disable-stylesheets"><?php _e( 'Disable Stylesheets', 'inline-tweet-sharer' ); ?>:</label></th>
+								<td><input type="checkbox" name="inline-tweet-sharer-disable-stylesheets" id="inline-tweet-sharer-disable-stylesheets" value="1" <?php if ( get_option( 'inline-tweet-sharer-disable-stylesheets' ) == 1 ) { echo "checked"; } ?> /></td>
+							</tr>
+
+							<tr valign="top">
 								<th scope="row" style="width:400px"><label for="inline-tweet-sharer-capitalise"><?php _e( 'Capitalise first letter of Tweet?', 'inline-tweet-sharer' ); ?>:</label></th>
 								<td><input type="checkbox" name="inline-tweet-sharer-capitalise" id="inline-tweet-sharer-capitalise" value="1" <?php if ( get_option( 'inline-tweet-sharer-capitalise' ) == 1 ) { echo "checked"; } ?> /></td>
 							</tr>
@@ -122,8 +127,11 @@ function inline_tweet_sharer_options() {
 						<li><?php _e( 'Go to ', 'inline-tweet-sharer' ); ?> <a href="https://bitly.com/">https://bitly.com/</a></li>
 						<li><?php _e( 'Click the hamburger menu in the top right hand corner to access your profile ', 'inline-tweet-sharer' ); ?></li>
 						<li><?php _e( 'Click on your username/email that when the menu pops out.', 'inline-tweet-sharer' ); ?></li>
+						<li><?php _e( 'Click on "Set Default API Group"', 'inline-tweet-sharer' ); ?></li>
+						<li><?php _e( 'Make sure it is set and click "save"', 'inline-tweet-sharer' ); ?></li>
 						<li><?php _e( 'Click on "Generic Access Token".', 'inline-tweet-sharer' ); ?></li>
 						<li><?php _e( 'Re-enter your password and then click "Generate Token"', 'inline-tweet-sharer' ); ?></li>
+						<li><?php _e( 'Add your Bitly Username Below.', 'inline-tweet-sharer' ); ?></li>
 						<li><?php _e( 'Add your Generic Access Token Below.', 'inline-tweet-sharer' ); ?></li>
 					</ol>
 					<table class="form-table">
@@ -131,6 +139,11 @@ function inline_tweet_sharer_options() {
 							<tr valign="top">
 								<th scope="row" style="width:400px"><label for="inline-tweet-sharer-bitly"><?php _e( 'Enable Bitly Integration', 'inline-tweet-sharer' ); ?>:</label></th>
 								<td><input type="checkbox" name="inline-tweet-sharer-bitly" id="inline-tweet-sharer-bitly" value="1" <?php if ( get_option( 'inline-tweet-sharer-bitly' ) == 1 ) { echo "checked"; } ?> /></td>
+							</tr>
+							<tr valign="top">
+								<th scope="row" style="width:400px"><label for="inline-tweet-sharer-bitlyusername"><?php _e( 'Your Bitly Username', 'inline-tweet-sharer' ); ?>:</label></th>
+								<td><input type="text" name="inline-tweet-sharer-bitlyusername" id="inline-tweet-sharer-bitlyusername" class="regular-text code" value="<?php echo get_option( 'inline-tweet-sharer-bitlyusername' ); ?>" />
+								</td>
 							</tr>
 							<tr valign="top">
 								<th scope="row" style="width:400px"><label for="inline-tweet-sharer-bitlyapikey"><?php _e( 'Your Generic Access Token', 'inline-tweet-sharer' ); ?>:</label></th>
@@ -146,7 +159,7 @@ function inline_tweet_sharer_options() {
 										<option value="j.mp" <?php if ( "j.mp" == get_option( 'inline-tweet-sharer-urlshortened' ) ) { echo "selected"; } ?>>j.mp</option>
 									</select>
 								</td>
-							</tr> */?>
+							</tr>
 							<tr valign="top">
 								<th scope="row" style="width:400px"><label for="inline-tweet-sharer-extraclass"><?php _e( 'Added class for the wrapper div (advanced)', 'inline-tweet-sharer' ); ?>:</label></th>
 								<td><input type="text" name="inline-tweet-sharer-extraclass" id="inline-tweet-sharer-extraclass" class="regular-text code" value="<?php echo get_option( 'inline-tweet-sharer-extraclass' ); ?>" />
@@ -212,32 +225,9 @@ function inline_tweet_sharer_options() {
 			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 
 			<br>
-			<a href="http://bufferapp.com/add" class="buffer-add-button" data-text="Just been using <?php echo ITS_PLUGIN_NAME; ?> #WordPress plugin" data-url="<?php echo ITS_PLUGIN_URL; ?>" data-count="horizontal" data-via="<?php echo ITS_AUTHOR_TWITTER; ?>">Buffer</a><script type="text/javascript" src="http://static.bufferapp.com/js/button.js"></script>
+			<a href="https://bufferapp.com/add" class="buffer-add-button" data-text="Just been using <?php echo ITS_PLUGIN_NAME; ?> #WordPress plugin" data-url="<?php echo ITS_PLUGIN_URL; ?>" data-count="horizontal" data-via="<?php echo ITS_AUTHOR_TWITTER; ?>">Buffer</a><script type="text/javascript" src="https://static.bufferapp.com/js/button.js"></script>
 
-			<br>
-			<div class="g-plusone" data-size="medium" data-href="<?php echo ITS_PLUGIN_URL; ?>"></div>
 
-			<script type="text/javascript">
-				window.___gcfg = {lang: 'en-GB'};
-
-				(function() {
-					var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-					po.src = 'https://apis.google.com/js/plusone.js';
-					var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-				})();
-			</script>
-
-			<br>
-
-			<su:badge layout="3" location="<?php echo ITS_PLUGIN_URL?>"></su:badge>
-
-			<script type="text/javascript">
-				(function() {
-					var li = document.createElement('script'); li.type = 'text/javascript'; li.async = true;
-					li.src = ('https:' == document.location.protocol ? 'https:' : 'http:') + '//platform.stumbleupon.com/1/widgets.js';
-					var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(li, s);
-				})();
-			</script>
 		</div>
 
 		<div class="pea_admin_box">
@@ -276,12 +266,14 @@ function inline_tweet_sharer_process() { // whitelist options
 	register_setting( 'inline-tweet-sharer-group', 'inline-tweet-sharer-dprefix' );
 	register_setting( 'inline-tweet-sharer-group', 'inline-tweet-sharer-dsuffix' );
 	register_setting( 'inline-tweet-sharer-group', 'inline-tweet-sharer-removespaces' );
-	register_setting( 'inline-tweet-sharer-group', 'inline-tweet-sharer-bypassutfdecode' );    
+	register_setting( 'inline-tweet-sharer-group', 'inline-tweet-sharer-bypassutfdecode' );
 	register_setting( 'inline-tweet-sharer-group', 'inline-tweet-sharer-bitly' );
+	register_setting( 'inline-tweet-sharer-group', 'inline-tweet-sharer-bitlyusername' );
 	register_setting( 'inline-tweet-sharer-group', 'inline-tweet-sharer-bitlyapikey' );
 	/* register_setting( 'inline-tweet-sharer-group', 'inline-tweet-sharer-bitly-client-id' );
 	register_setting( 'inline-tweet-sharer-group', 'inline-tweet-sharer-bitly-client-secret' ); */
 	register_setting( 'inline-tweet-sharer-group', 'inline-tweet-sharer-urlshortened' );
+	register_setting( 'inline-tweet-sharer-group', 'inline-tweet-sharer-disable-stylesheets' );
 
 	do_action( 'inline_tweet_sharer_additional_save_options' );
 }
