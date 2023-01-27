@@ -54,7 +54,7 @@ function inline_tweet_sharer_options() {
 
 							<tr valign="top">
 								<th scope="row" style="width:400px"><label for="inline-tweet-sharer-default"><?php _e( 'Default Twitter Handle (leave blank for none)', 'inline-tweet-sharer' ); ?>:</label></th>
-								<td><input type="text" name="inline-tweet-sharer-default" id="inline-tweet-sharer-default" class="regular-text code" value="<?php echo get_option( 'inline-tweet-sharer-default' ); ?>" />
+								<td><input type="text" name="inline-tweet-sharer-default" id="inline-tweet-sharer-default" class="regular-text code" value="<?php echo esc_attr( get_option( 'inline-tweet-sharer-default' ) ); ?>" />
 									<br /><?php _e( 'This is the "RT @______: section for tweets before the quoted text, leave blank for no quoted text', 'inline-tweet-sharer' ); ?>
 									<br /><?php _e( 'Just place the twitter username, no @, no http://twitter.com/', 'inline-tweet-sharer' ); ?>
 								</td>
@@ -96,12 +96,12 @@ function inline_tweet_sharer_options() {
 							</tr>
 							<tr valign="top">
 								<th scope="row" style="width:400px"><label for="inline-tweet-sharer-dprefix"><?php _e( 'Default Prefix', 'inline-tweet-sharer' ); ?>:</label></th>
-								<td><input type="text" name="inline-tweet-sharer-dprefix" id="inline-tweet-sharer-dprefix" class="regular-text code" value="<?php echo get_option( 'inline-tweet-sharer-dprefix' ); ?>" />
+								<td><input type="text" name="inline-tweet-sharer-dprefix" id="inline-tweet-sharer-dprefix" class="regular-text code" value="<?php echo esc_attr( get_option( 'inline-tweet-sharer-dprefix' ) ); ?>" />
 								</td>
 							</tr>
 							<tr valign="top">
 								<th scope="row" style="width:400px"><label for="inline-tweet-sharer-dsuffix"><?php _e( 'Default Suffix', 'inline-tweet-sharer' ); ?>:</label></th>
-								<td><input type="text" name="inline-tweet-sharer-dsuffix" id="inline-tweet-sharer-dsuffix" class="regular-text code" value="<?php echo get_option( 'inline-tweet-sharer-dsuffix' ); ?>" />
+								<td><input type="text" name="inline-tweet-sharer-dsuffix" id="inline-tweet-sharer-dsuffix" class="regular-text code" value="<?php echo esc_attr( get_option( 'inline-tweet-sharer-dsuffix' ) ); ?>" />
 								</td>
 							</tr>
 							<tr valign="top">
@@ -142,12 +142,12 @@ function inline_tweet_sharer_options() {
 							</tr>
 							<tr valign="top">
 								<th scope="row" style="width:400px"><label for="inline-tweet-sharer-bitlyusername"><?php _e( 'Your Bitly Username', 'inline-tweet-sharer' ); ?>:</label></th>
-								<td><input type="text" name="inline-tweet-sharer-bitlyusername" id="inline-tweet-sharer-bitlyusername" class="regular-text code" value="<?php echo get_option( 'inline-tweet-sharer-bitlyusername' ); ?>" />
+								<td><input type="text" name="inline-tweet-sharer-bitlyusername" id="inline-tweet-sharer-bitlyusername" class="regular-text code" value="<?php echo esc_attr( get_option( 'inline-tweet-sharer-bitlyusername' ) ); ?>" />
 								</td>
 							</tr>
 							<tr valign="top">
 								<th scope="row" style="width:400px"><label for="inline-tweet-sharer-bitlyapikey"><?php _e( 'Your Generic Access Token', 'inline-tweet-sharer' ); ?>:</label></th>
-								<td><input type="text" name="inline-tweet-sharer-bitlyapikey" id="inline-tweet-sharer-bitlyapikey" class="regular-text code" value="<?php echo get_option( 'inline-tweet-sharer-bitlyapikey' ); ?>" />
+								<td><input type="text" name="inline-tweet-sharer-bitlyapikey" id="inline-tweet-sharer-bitlyapikey" class="regular-text code" value="<?php echo esc_attr(  get_option( 'inline-tweet-sharer-bitlyapikey' ) ); ?>" />
 								</td>
 							</tr>
 							<tr valign="top">
@@ -162,7 +162,7 @@ function inline_tweet_sharer_options() {
 							</tr>
 							<tr valign="top">
 								<th scope="row" style="width:400px"><label for="inline-tweet-sharer-extraclass"><?php _e( 'Added class for the wrapper div (advanced)', 'inline-tweet-sharer' ); ?>:</label></th>
-								<td><input type="text" name="inline-tweet-sharer-extraclass" id="inline-tweet-sharer-extraclass" class="regular-text code" value="<?php echo get_option( 'inline-tweet-sharer-extraclass' ); ?>" />
+								<td><input type="text" name="inline-tweet-sharer-extraclass" id="inline-tweet-sharer-extraclass" class="regular-text code" value="<?php echo esc_attr( get_option( 'inline-tweet-sharer-extraclass' ) ); ?>" />
 									<br /><?php _e( 'Use this to add an extra class to the wrapper, use this to control what your tweet link looks like.', 'inline-tweet-sharer' ); ?>
 								</td>
 							</tr>

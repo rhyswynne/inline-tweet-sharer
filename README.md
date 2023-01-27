@@ -4,7 +4,7 @@ Plugin Name:  Inline Tweet Sharer
 Plugin URI: http://winwar.co.uk/plugins/inline-tweet-sharer/  
 Donate link: http://winwar.co.uk/plugins/inline-tweet-sharer/#donate 
 Description: Create twitter links on your site that tweet memorable quotes in your text to help increase social media views, similar to the New York Times.
-Version:      1.5.4
+Version:      2.6
 Author:       Rhys Wynne
 Author URI:   http://winwar.co.uk/
 License: GPLv2 or later
@@ -209,8 +209,8 @@ CSS Help
 The CSS classes for the plugin are the following:-
 
 * **a.inline-twitter-link** - style for the entire link.
-* **a.inline-twitter-link span** – style for the twitter logo at the end of the link.
-* **a:hover.inline-twitter-link** – style for the entire link with when hovered over it.
+* **a.inline-twitter-link span** ï¿½ style for the twitter logo at the end of the link.
+* **a:hover.inline-twitter-link** ï¿½ style for the entire link with when hovered over it.
 * **a:hover.inline-twitter-link span** - style for the twitter logo at the end of the link when hovered.
 
 Check out our [CSS Customisation Service](http://winwar.co.uk/plugins/inline-tweet-sharer/#csscustomisation) if you're still struggling.
