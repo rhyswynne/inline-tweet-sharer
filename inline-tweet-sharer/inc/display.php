@@ -1,6 +1,5 @@
 <?php
 
-/* NOW LETS ADD THE SHROTCODE "INLINE_TWEET" THAT HANDLES THE INLINE TWEET */
 function inline_tweet_sharer_shortcode( $atts, $content = null ) {
 	$tweeter = get_option( 'inline-tweet-sharer-default' );
 
@@ -22,122 +21,120 @@ function inline_tweet_sharer_shortcode( $atts, $content = null ) {
 	return $tweetlink;
 }
 
+function inline_tweet_sharer_create_tweet( $prefix = "", $tweeter = "", $suffix = "", $removespaces = false, $content = "", $linktotweet = "", $extrafields = "")
+{
 
-function inline_tweet_sharer_create_tweet( $prefix = "", $tweeter = "", $suffix = "", $removespaces, $content, $linktotweet = "", $extrafields = "" ) {
+    $tweetlinkstring = "";
 
-	$tweetlinkstring = "";
+    if ($removespaces) {
+        $spacestring = "";
+    } else {
+        $spacestring = " ";
+    }
 
-	if ( $removespaces ) {
-		$spacestring = "";
-	} else {
-		$spacestring = " ";
-	}
+    if (!$linktotweet) {
+        $linktotweet = get_pagenum_link();
+    }
 
-	if ( !$linktotweet ) {
-		$linktotweet = get_pagenum_link();
-	}
+    if ("1" == get_option('inline-tweet-sharer-bitly')) {
+        $urlshortener = get_option('inline-tweet-sharer-urlshortened');
+        if (!$urlshortener) {
+            $urlshortener = "bit.ly";
+        }
+        $results   = bitly4_shorten_a_link($linktotweet, $urlshortener);
+        $permalink = $results['url'];
+    } else {
+        $permalink = $linktotweet;
+    }
 
-	if ( "1" == get_option( 'inline-tweet-sharer-bitly' ) ) {
-		$urlshortener = get_option( 'inline-tweet-sharer-urlshortened' );
-		if ( !$urlshortener ) { $urlshortener = "bit.ly"; }
-		$results   = bitly4_shorten_a_link( $linktotweet, $urlshortener );
-		$permalink = $results['url'];
-	} else {
-		$permalink = $linktotweet;
-	}
+    if ("" != $prefix && "null" != $prefix) {
+        $tweetlinkstring .= $prefix . $spacestring;
+    } elseif ("" != $tweeter && "null" != $tweeter) {
+        $tweeter = str_replace("@", "", $tweeter);
+        $tweetlinkstring .= "RT @" . $tweeter . ": ";
+    } elseif ("" != get_option('inline-tweet-sharer-default')) {
+        $tweeter = get_option('inline-tweet-sharer-default');
+        $tweeter = str_replace("@", "", $tweeter);
+        $tweetlinkstring .= "RT @" . $tweeter . ": ";
+    } elseif (1 == get_option('inline-tweet-sharer-usedefault')) {
+        $prefix = get_option('inline-tweet-sharer-dprefix');
+        $tweetlinkstring .= $prefix . $spacestring;
+    }
 
-	if ( "" != $prefix && "null" != $prefix ) {
-		$tweetlinkstring .= $prefix . $spacestring;
-	}
-	elseif ( "" != $tweeter && "null" != $tweeter ) {
-		$tweeter = str_replace( "@", "", $tweeter );
-		$tweetlinkstring .= "RT @" . $tweeter . ": ";
-	}
-	elseif ( "" != get_option( 'inline-tweet-sharer-default' ) ) {
-		$tweeter = get_option( 'inline-tweet-sharer-default' );
-		$tweeter = str_replace( "@", "", $tweeter );
-		$tweetlinkstring .= "RT @" . $tweeter . ": ";
-	} elseif (1 == get_option( 'inline-tweet-sharer-usedefault' ) ) {
-		$prefix = get_option( 'inline-tweet-sharer-dprefix' );
-		$tweetlinkstring .= $prefix . $spacestring;
-	}
+    $content = strip_tags($content);
+    $tweetlinkstring .= $content . $spacestring;
 
-	$content = strip_tags( $content );
-	$tweetlinkstring .= $content . $spacestring;
-
-	if ( "" != $suffix && "null" != $suffix ) {
-		$tweetlinkstring .= $suffix;
-	} elseif (1 == get_option( 'inline-tweet-sharer-usedefault' ) ) {
-		$prefix = get_option( 'inline-tweet-sharer-dsuffix' );
-		$tweetlinkstring .= $prefix . $spacestring;
-	}
-
-
-	/**
-	 * Filter inline_tweet_sharer_change_tweet_string
-	 *
-	 * Changes the tweet string to whatever you wish.
-	 *
-	 * @var string
-	 */
-	$tweetlinkstring = apply_filters( 'inline_tweet_sharer_change_tweet_string', $tweetlinkstring );
-
-	$bypassutfdecode = get_option( 'inline-tweet-sharer-bypassutfdecode' );
-
-	if ( !$bypassutfdecode ) {
-		if ( function_exists( 'utf8_decode' ) ) {
-			$tweetlinkstring = utf8_decode( $tweetlinkstring );
-		}
-	}
+    if ("" != $suffix && "null" != $suffix) {
+        $tweetlinkstring .= $suffix;
+    } elseif (1 == get_option('inline-tweet-sharer-usedefault')) {
+        $prefix = get_option('inline-tweet-sharer-dsuffix');
+        $tweetlinkstring .= $prefix . $spacestring;
+    }
 
 
+    /**
+     * Filter inline_tweet_sharer_change_tweet_string
+     *
+     * Changes the tweet string to whatever you wish.
+     *
+     * @var string
+     */
+    $tweetlinkstring = apply_filters('inline_tweet_sharer_change_tweet_string', $tweetlinkstring);
 
-	if ( ( strlen( $tweetlinkstring ) + 24 ) > ITS_TWEET_LENGTH ) {
-		$tweetlinkstring = substr( $tweetlinkstring, 0, ( ITS_TWEET_LENGTH-( strlen( $tweetlinkstring ) + 25 ) ) );
-		$tweetlinkstring = preg_replace( '/ [^ ]*$/', '...', $tweetlinkstring );
-	}
+    $bypassutfdecode = get_option('inline-tweet-sharer-bypassutfdecode');
 
-	if ( "1" == get_option( 'inline-tweet-sharer-capitalise' ) ) {
-		$tweetlinkstring = ucfirst( $tweetlinkstring );
-	}
+    if (!$bypassutfdecode) {
+        if (function_exists('utf8_decode')) {
+            $tweetlinkstring = utf8_decode($tweetlinkstring);
+        }
+    }
 
-	$tweetlinkstring = urlencode( html_entity_decode( $tweetlinkstring, ENT_COMPAT, get_bloginfo('charset') ) );
 
-	$extraclass=get_option( 'inline-tweet-sharer-extraclass' );
 
-	if ( $extraclass ) {
-		$extraclass = '<div class="'.$extraclass.'">';
-	}
+    if ((strlen($tweetlinkstring) + 24) > ITS_TWEET_LENGTH) {
+        $tweetlinkstring = substr($tweetlinkstring, 0, (ITS_TWEET_LENGTH - (strlen($tweetlinkstring) + 25)));
+        $tweetlinkstring = preg_replace('/ [^ ]*$/', '...', $tweetlinkstring);
+    }
 
-	$link = $extraclass . '<a class="';
+    if ("1" == get_option('inline-tweet-sharer-capitalise')) {
+        $tweetlinkstring = ucfirst($tweetlinkstring);
+    }
 
-	if ( "1" == get_option( 'inline-tweet-sharer-marker' ) ) {
-		$link .= 'inline-twitter-link';
-	}
+    $tweetlinkstring = urlencode(html_entity_decode($tweetlinkstring, ENT_COMPAT, get_bloginfo('charset')));
 
-	$url = 'https://twitter.com/intent/tweet?url=' . urlencode( $permalink ) . '&text=' . $tweetlinkstring . $extrafields;
-	$url = str_replace( array( "\n", "\r" ), "", $url );
-	$url = str_replace( array( "/" ), "\/", $url );
+    $extraclass = get_option('inline-tweet-sharer-extraclass');
 
-	$link .= ' inline-tweet-click" href="#" onclick="inline_tweet_sharer_open_win(\''.$url.'\');"';
-	//$link .= ' href="#" onclick="window.open(\''.$url.'\',\'tweetwindow\',\'width=566,height=592,location=yes,directories=no,channelmode=no,menubar=no,resizable=no,scrollbars=no,status=no,toolbar=no\')"';
-	$link .= ' title="'. __( 'Tweet This!', 'inline-tweet-sharer' ).'">' . $content;
+    if ($extraclass) {
+        $extraclass = '<div class="' . $extraclass . '">';
+    }
 
-	if ( "1" == get_option( 'inline-tweet-sharer-marker' ) ) {
-		if ( "1" == get_option( 'inline-tweet-sharer-dashicons' ) ) {
-			$link .= ' <span class="dashicons dashicons-twitter dashicons-inline-tweet-sharer"></span>';
-		} else {
-			$link .= ' <span class="non-dashicons"> </span>';
-		}
+    $link = $extraclass . '<a class="';
 
-	}
+    if ("1" == get_option('inline-tweet-sharer-marker')) {
+        $link .= 'inline-twitter-link';
+    }
 
-	$link .= "</a>";
+    $url = 'https://twitter.com/intent/tweet?url=' . urlencode($permalink) . '&text=' . $tweetlinkstring . $extrafields;
+    $url = str_replace(array("\n", "\r"), "", $url);
+    $url = str_replace(array("/"), "\/", $url);
 
-	if ( $extraclass ) {
-		$link .= "</div>";
-	}
+    $link .= ' inline-tweet-click" href="#" onclick="inline_tweet_sharer_open_win(\'' . $url . '\');"';
+    //$link .= ' href="#" onclick="window.open(\''.$url.'\',\'tweetwindow\',\'width=566,height=592,location=yes,directories=no,channelmode=no,menubar=no,resizable=no,scrollbars=no,status=no,toolbar=no\')"';
+    $link .= ' title="' . __('Tweet This!', 'inline-tweet-sharer') . '">' . $content;
 
-	return $link;
+    if ("1" == get_option('inline-tweet-sharer-marker')) {
+        if ("1" == get_option('inline-tweet-sharer-dashicons')) {
+            $link .= ' <span class="dashicons dashicons-twitter dashicons-inline-tweet-sharer"></span>';
+        } else {
+            $link .= ' <span class="non-dashicons"> </span>';
+        }
+    }
 
+    $link .= "</a>";
+
+    if ($extraclass) {
+        $link .= "</div>";
+    }
+
+    return $link;
 }
